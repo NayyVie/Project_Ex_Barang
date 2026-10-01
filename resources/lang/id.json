@@ -1,0 +1,36 @@
+{
+    "Dashboard": "Dashboard",
+    "Riwayat": "Riwayat",
+    "Laporan": "Laporan",
+    "Notifikasi": "Notifikasi",
+    "Profil": "Profil",
+    "Pekerja": "Pekerja",
+    "Keluar": "Keluar",
+
+    "Input Ex Barang": "Input Ex Barang",
+    "Data Barang": "Data Barang",
+    "Informasi Pelapor": "Informasi Pelapor",
+    "Bukti & TTD": "Bukti & TTD",
+
+    "Kembali": "Kembali",
+    "Lanjut": "Lanjut",
+    "Kirim Laporan": "Kirim Laporan",
+
+    "Nama Barang": "Nama Barang",
+    "Nomor Asset": "Nomor Asset",
+    "Jenis Pengembalian": "Jenis Pengembalian",
+    "Jenis Perolehan Barang": "Jenis Perolehan Barang",
+    "Material Base": "Material Base",
+    "Kuantitas": "Kuantitas",
+    "Satuan": "Satuan",
+    "Lokasi Gudang": "Lokasi Gudang",
+    "Estimasi (Kg)": "Estimasi (Kg)",
+
+    "Pilih jenis pengembalian...": "Pilih jenis Pengembalian...",
+    "Pilih jenis perolehan barang...": "Pilih jenis perolehan barang...",
+    "Pilih jenis material barang...": "Pilih jenis material barang...",
+    "Pilih satuan...": "Pilih satuan...",
+
+    "English": "English",
+    "Indonesia": "Indonesia"
+}
