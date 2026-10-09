@@ -20,7 +20,7 @@
                     Scan Barcode Mutasi
                 </button>
 
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="button" id="btnBuatMutasi">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M12 5v14" />
@@ -160,10 +160,9 @@
 
             <div class="search-box">
 
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="7" />
-                    <path d="m20 20-4-4" />
+                    <path d="M20 20l-4-4" />
                 </svg>
 
                 <input type="text" id="searchMutasi"
@@ -430,11 +429,248 @@
 
     </div>
 
+    {{-- =========================================================
+     MODAL BUAT MUTASI ANTAR GUDANG
+========================================================= --}}
+    <div class="mutasi-modal-overlay" id="mutasiModal">
+
+        <div class="mutasi-modal">
+
+            {{-- HEADER MODAL --}}
+            <div class="mutasi-modal-header">
+
+                <div>
+                    <h2>Formulir Mutasi Stok Antar Gudang (Inter-Storeroom Transfer)</h2>
+
+                    <p>
+                        Pemindahan material suku cadang antar storeroom pembangkit
+                        terhubung ke IBM Maximo
+                    </p>
+                </div>
+
+                <button type="button" class="mutasi-modal-close" id="closeMutasiModal">
+                    ×
+                </button>
+
+            </div>
+
+
+            {{-- BODY MODAL --}}
+            <div class="mutasi-modal-body">
+
+                {{-- MAXIMO BANNER --}}
+                <div class="mutasi-maximo-banner">
+
+                    <div class="mutasi-banner-left">
+
+                        <span class="mutasi-transfer-icon">⇄</span>
+
+                        <strong>
+                            Transfer Antar Storeroom IBM Maximo MIF
+                        </strong>
+
+                    </div>
+
+                    <span class="mutasi-mif-status">
+                        MIF STOREROOM
+                    </span>
+
+                </div>
+
+
+                {{-- FORM --}}
+                <form id="formMutasiGudang">
+
+                    {{-- NOMOR REFERENSI --}}
+                    <div class="mutasi-form-group">
+
+                        <label>
+                            Nomor Referensi Transfer Gudang *
+                        </label>
+
+                        <input type="text" id="mutasiReference" name="reference" value="TRF-UNIT-2026-0774" readonly>
+
+                    </div>
+
+
+                    {{-- GUDANG ASAL & TUJUAN --}}
+                    <div class="mutasi-form-grid">
+
+                        <div class="mutasi-form-group">
+
+                            <label>
+                                Gudang Asal (Pengirim) *
+                            </label>
+
+                            <select id="mutasiGudangAsal" name="gudang_asal">
+
+                                <option selected>
+                                    Gudang Utama Sentral (PLTU 1-2)
+                                </option>
+
+                                <option>
+                                    Gudang Satelit PLTU Unit 3-4
+                                </option>
+
+                                <option>
+                                    Gudang PLTU Unit 3-4
+                                </option>
+
+                                <option>
+                                    Gudang BOP
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mutasi-form-group">
+
+                            <label>
+                                Gudang Tujuan (Penerima) *
+                            </label>
+
+                            <select id="mutasiGudangTujuan" name="gudang_tujuan">
+
+                                <option selected>
+                                    Gudang Satelit PLTU Unit 3-4
+                                </option>
+
+                                <option>
+                                    Gudang Utama Sentral (PLTU 1-2)
+                                </option>
+
+                                <option>
+                                    Gudang PLTU Unit 3-4
+                                </option>
+
+                                <option>
+                                    Gudang BOP
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- PETUGAS PENGIRIM & PENERIMA --}}
+                    <div class="mutasi-form-grid">
+
+                        <div class="mutasi-form-group">
+
+                            <label>
+                                Petugas Pengirim (Gudang Asal) *
+                            </label>
+
+                            <input type="text" id="mutasiPetugasPengirim" name="petugas_pengirim"
+                                value="Bambang Supriyanto">
+
+                        </div>
+
+
+                        <div class="mutasi-form-group">
+
+                            <label>
+                                Petugas Penerima (Gudang Tujuan) *
+                            </label>
+
+                            <input type="text" id="mutasiPetugasPenerima" name="petugas_penerima"
+                                value="Ahmad Fauzi (Logistik Unit 3)">
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- MATERIAL --}}
+                    <div class="mutasi-form-group">
+
+                        <label>
+                            Pilih Material Spare Part *
+                        </label>
+
+                        <select id="mutasiMaterial" name="material">
+
+                            <option selected>
+                                MP-081201 - Mechanical Seal Cartridge Type D-65mm for Boiler Feed Pump (Stok Saat Ini: 6
+                                SET)
+                            </option>
+
+                            <option>
+                                CH-012903 - Turbine Lube Oil ISO VG 46 Extreme Pressure (Stok Saat Ini: 400 LTR)
+                            </option>
+
+                            <option>
+                                BR-024781 - Bearing Industrial 6312 ZZ (Stok Saat Ini: 6 PCS)
+                            </option>
+
+                        </select>
+
+                        <div class="mutasi-material-info">
+                            Lokasi Rak Awal:
+                            <strong>RAK-A-01-02</strong>
+                            |
+                            Stok Tersedia:
+                            <strong>6 SET</strong>
+                        </div>
+
+                    </div>
+
+
+                    {{-- JUMLAH --}}
+                    <div class="mutasi-form-group">
+
+                        <label>
+                            Jumlah Kuantitas Dismutasi (SET) *
+                        </label>
+
+                        <input type="number" id="mutasiQuantity" name="quantity" value="2" min="1">
+
+                    </div>
+
+
+                    {{-- ALASAN --}}
+                    <div class="mutasi-form-group">
+
+                        <label>
+                            Alasan Mutasi Antar Gudang
+                        </label>
+
+                        <input type="text" id="mutasiReason" name="reason"
+                            value="Buffering stok suku cadang menghadapi jadwal overhaul berkala">
+
+                    </div>
+
+
+                    {{-- ACTION --}}
+                    <div class="mutasi-modal-footer">
+
+                        <button type="button" class="mutasi-btn-cancel" id="cancelMutasiModal">
+                            Batal
+                        </button>
+
+                        <button type="submit" class="mutasi-btn-save">
+                            Simpan Mutasi &amp; Update Maximo
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
 
     <style>
         /* =========================================================
-                           MUTASI PAGE
-                        ========================================================= */
+                                                                                                                           MUTASI PAGE
+                                                                                                                        ========================================================= */
 
         .mutasi-page {
             width: 100%;
@@ -444,8 +680,8 @@
 
 
         /* =========================================================
-                           HEADER
-                        ========================================================= */
+                                                                                                                           HEADER
+                                                                                                                        ========================================================= */
 
         .mutasi-header {
             display: flex;
@@ -456,8 +692,8 @@
         }
 
         /* =========================================================
-                           HEADER BUTTON
-                        ========================================================= */
+                                                                                                                           HEADER BUTTON
+                                                                                                                        ========================================================= */
 
         .header-actions {
             display: flex;
@@ -504,8 +740,8 @@
 
 
         /* =========================================================
-                           STATISTICS
-                        ========================================================= */
+                                                                                                                           STATISTICS
+                                                                                                                        ========================================================= */
 
         .stats-grid {
             display: grid;
@@ -599,8 +835,8 @@
 
 
         /* =========================================================
-                           FILTER
-                        ========================================================= */
+                                                                                                                           FILTER
+                                                                                                                        ========================================================= */
 
         .filter-card {
             background: #ffffff;
@@ -618,40 +854,52 @@
         }
 
         .search-box {
-            height: 38px;
+            height: 37px;
+
             flex: 1;
-            max-width: 500px;
 
-            display: flex;
-            align-items: center;
-            gap: 9px;
+            min-width: 200px;
 
-            background: #f2f6fa;
-            border: 1px solid #d9e4ef;
-            border-radius: 8px;
-            padding: 0 12px;
+            position: relative;
         }
 
         .search-box svg {
+            position: absolute;
+
             width: 17px;
             height: 17px;
-            color: #7890a8;
-            flex-shrink: 0;
+
+            left: 13px;
+            top: 10px;
+
+            color: #6e7d96;
         }
 
         .search-box input {
             width: 100%;
-            border: none;
+            height: 100%;
+
+            padding: 0 12px 0 39px;
+
+            border: 1px solid #dfe5ec;
+            border-radius: 7px;
+
             outline: none;
-            background: transparent;
+
+            background: #f8fafc;
+
+            color: #95a1b2;
 
             font-family: inherit;
             font-size: 11px;
-            color: #24476b;
         }
 
         .search-box input::placeholder {
-            color: #8799ac;
+            color: #738099;
+        }
+
+        .search-box input:focus {
+            border-color: #2873d8;
         }
 
         .filter-actions {
@@ -706,8 +954,8 @@
 
 
         /* =========================================================
-                           TABLE
-                        ========================================================= */
+                                                                                                                           TABLE
+                                                                                                                        ========================================================= */
 
         .table-card {
             background: #ffffff;
@@ -809,8 +1057,8 @@
 
 
         /* =========================================================
-                           TABLE CONTENT
-                        ========================================================= */
+                                                                                                                           TABLE CONTENT
+                                                                                                                        ========================================================= */
 
         .mutasi-table strong {
             color: #173d66;
@@ -941,8 +1189,8 @@
 
 
         /* =========================================================
-                           TABLET
-                        ========================================================= */
+                                                                                                                           TABLET
+                                                                                                                        ========================================================= */
 
         @media (max-width: 1200px) {
 
@@ -975,8 +1223,8 @@
 
 
         /* =========================================================
-                           MOBILE
-                        ========================================================= */
+                                                                                                                           MOBILE
+                                                                                                                        ========================================================= */
 
         @media (max-width: 768px) {
 
@@ -1042,8 +1290,8 @@
 
 
         /* =========================================================
-                           MOBILE KECIL
-                        ========================================================= */
+                                                                                                                           MOBILE KECIL
+                                                                                                                        ========================================================= */
 
         @media (max-width: 480px) {
 
@@ -1083,8 +1331,8 @@
 
 
         /* =========================================================
-                           VERY SMALL PHONE
-                        ========================================================= */
+                                                                                                                           VERY SMALL PHONE
+                                                                                                                        ========================================================= */
 
         @media (max-width: 360px) {
 
@@ -1094,6 +1342,428 @@
 
             .stat-card {
                 min-height: auto;
+            }
+        }
+
+        /* =========================================================
+                                                                                                   MODAL MUTASI ANTAR GUDANG
+                                                                                                ========================================================= */
+
+        .mutasi-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(23, 43, 77, 0.55);
+
+            backdrop-filter: blur(4px);
+        }
+
+        .mutasi-modal-overlay.show {
+            display: flex;
+        }
+
+
+        .mutasi-modal {
+            width: 100%;
+            max-width: 670px;
+
+            max-height: calc(100vh - 20px);
+
+            background: #ffffff;
+
+            border: 1px solid #dce6f0;
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 20px 60px rgba(23, 43, 77, 0.22);
+
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            animation: mutasiModalIn .2s ease;
+        }
+
+        @keyframes mutasiModalIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+
+        /* =========================================================
+                                                                                                   MODAL HEADER
+                                                                                                ========================================================= */
+
+        .mutasi-modal-header {
+            min-height: 78px;
+
+            padding: 17px 22px;
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            background: #fffff;
+
+            border-bottom: 1px solid #e5edf5;
+        }
+
+        .mutasi-modal-header h2 {
+            margin: 0;
+
+            color: #172b4d;
+
+            font-size: 18px;
+            font-weight: 700;
+
+            line-height: 1.35;
+        }
+
+        .mutasi-modal-header p {
+            margin: 5px 0 0;
+
+            color: #7890ae;
+
+            font-size: 11px;
+
+            line-height: 1.4;
+        }
+
+        .mutasi-modal-close {
+            width: 28px;
+            height: 28px;
+
+            border: none;
+
+            background: #f3f7fb;
+
+            color: #7890ae;
+
+            font-size: 21px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            flex-shrink: 0;
+
+            padding: 0;
+            transition: .2s ease;
+        }
+
+        .mutasi-modal-close:hover {
+            background: #e8f1fa;
+            color: #172b4d;
+        }
+
+
+        /* =========================================================
+                                                                                                   MODAL BODY
+                                                                                                ========================================================= */
+
+        .mutasi-modal-body {
+            padding: 23px;
+
+            overflow-y: auto;
+        }
+
+        /* =========================================================
+                                                                                                   MAXIMO BANNER
+                                                                                                ========================================================= */
+
+        .mutasi-maximo-banner {
+            min-height: 46px;
+
+            padding: 0 13px;
+
+            margin-bottom: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+
+            border-radius: 8px;
+
+            background: #f0f7ff;
+
+            border: 1px solid #cfe3fa;
+        }
+
+        .mutasi-banner-left {
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+        }
+
+        .mutasi-transfer-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: #dcecff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0874c9;
+            font-size: 18px;
+        }
+
+        .mutasi-banner-left strong {
+            color: #0758bd;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .mutasi-mif-status {
+            color: #a6a4ac;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+                                                                                                   FORM
+                                                                                                ========================================================= */
+
+        .mutasi-form-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 16px;
+        }
+
+        .mutasi-form-group {
+            margin-bottom: 15px;
+        }
+
+        .mutasi-form-group label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #526b87;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .mutasi-form-group input,
+        .mutasi-form-group select {
+            width: 100%;
+
+            height: 35px;
+
+            box-sizing: border-box;
+
+            border: 1px solid #d7e2ee;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            background: #f8fafc;
+
+            color: #334f70;
+
+            padding: 0 12px;
+
+            font-family: inherit;
+
+            font-size: 10px;
+        }
+
+        .mutasi-form-group input:focus,
+        .mutasi-form-group select:focus {
+            border-color: #0878c8;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(8, 116, 201, .08);
+        }
+
+        .mutasi-form-group input[readonly] {
+            color: #0b87e0;
+
+            font-weight: 700;
+        }
+
+        .mutasi-form-group select {
+            cursor: pointer;
+
+            appearance: auto;
+        }
+
+        .mutasi-form-group select option {
+            background: #f8fafc;
+
+            color: #334f70;
+        }
+
+
+        /* =========================================================
+                                                                                                   MATERIAL INFO
+                                                                                                ========================================================= */
+
+        .mutasi-material-info {
+            margin-top: 6px;
+
+            color: #6f8097;
+
+            font-size: 9px;
+
+            line-height: 1.4;
+        }
+
+        .mutasi-material-info strong {
+            color: #788ba2;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+                                                                                                   FOOTER BUTTON
+                                                                                                ========================================================= */
+
+        .mutasi-modal-footer {
+            display: flex;
+
+            justify-content: flex-end;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-top: 6px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #e5edf5;
+        }
+
+        .mutasi-btn-cancel {
+            height: 30px;
+
+            padding: 0 12px;
+
+            border: 1px solid #d7e2ee;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            color: #526b87;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .mutasi-btn-cancel:hover {
+            background: #f3f7fb;
+        }
+
+        .mutasi-btn-save {
+            height: 30px;
+
+            padding: 0 14px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: linear-gradient(135deg,
+                    #1653eb,
+                    #0758dc);
+
+            color: #ffffff;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 10px rgba(22, 83, 235, .20);
+        }
+
+        .mutasi-btn-save:hover {
+            background: linear-gradient(135deg,
+                    #2462f2,
+                    #0864eb);
+        }
+
+
+        /* =========================================================
+                                                                                                   RESPONSIVE MODAL
+                                                                                                ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .mutasi-modal-overlay {
+                padding: 10px;
+            }
+
+            .mutasi-modal {
+                max-height: calc(100vh - 20px);
+            }
+
+            .mutasi-modal-header {
+                padding: 15px 17px;
+            }
+
+            .mutasi-modal-header h2 {
+                font-size: 15px;
+            }
+
+            .mutasi-modal-body {
+                padding: 17px;
+            }
+
+            .mutasi-form-grid {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            .mutasi-modal-footer {
+                flex-direction: column-reverse;
+
+                align-items: stretch;
+            }
+
+            .mutasi-btn-cancel,
+            .mutasi-btn-save {
+                width: 100%;
             }
         }
     </style>
@@ -1127,6 +1797,200 @@
                 });
 
             });
+
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const btnBuatMutasi =
+                document.getElementById('btnBuatMutasi');
+
+            const mutasiModal =
+                document.getElementById('mutasiModal');
+
+            const closeMutasiModal =
+                document.getElementById('closeMutasiModal');
+
+            const cancelMutasiModal =
+                document.getElementById('cancelMutasiModal');
+
+            const formMutasiGudang =
+                document.getElementById('formMutasiGudang');
+
+
+            /* =====================================================
+               BUKA MODAL
+            ===================================================== */
+
+            if (btnBuatMutasi) {
+
+                btnBuatMutasi.addEventListener('click', function() {
+
+                    mutasiModal.classList.add('show');
+
+                    document.body.style.overflow = 'hidden';
+
+                });
+
+            }
+
+
+            /* =====================================================
+               TUTUP MODAL
+            ===================================================== */
+
+            function closeModal() {
+
+                if (mutasiModal) {
+
+                    mutasiModal.classList.remove('show');
+
+                }
+
+                document.body.style.overflow = '';
+
+            }
+
+
+            if (closeMutasiModal) {
+
+                closeMutasiModal.addEventListener(
+                    'click',
+                    closeModal
+                );
+
+            }
+
+
+            if (cancelMutasiModal) {
+
+                cancelMutasiModal.addEventListener(
+                    'click',
+                    closeModal
+                );
+
+            }
+
+
+            /* =====================================================
+               KLIK AREA LUAR MODAL
+            ===================================================== */
+
+            if (mutasiModal) {
+
+                mutasiModal.addEventListener(
+                    'click',
+                    function(event) {
+
+                        if (event.target === mutasiModal) {
+
+                            closeModal();
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* =====================================================
+               ESCAPE
+            ===================================================== */
+
+            document.addEventListener(
+                'keydown',
+                function(event) {
+
+                    if (
+                        event.key === 'Escape' &&
+                        mutasiModal &&
+                        mutasiModal.classList.contains('show')
+                    ) {
+
+                        closeModal();
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================================
+               SUBMIT MUTASI
+            ===================================================== */
+
+            if (formMutasiGudang) {
+
+                formMutasiGudang.addEventListener(
+                    'submit',
+                    function(event) {
+
+                        event.preventDefault();
+
+                        const gudangAsal =
+                            document.getElementById(
+                                'mutasiGudangAsal'
+                            ).value;
+
+                        const gudangTujuan =
+                            document.getElementById(
+                                'mutasiGudangTujuan'
+                            ).value;
+
+                        const quantity =
+                            document.getElementById(
+                                'mutasiQuantity'
+                            ).value;
+
+
+                        /* Validasi gudang */
+
+                        if (gudangAsal === gudangTujuan) {
+
+                            alert(
+                                'Gudang asal dan gudang tujuan tidak boleh sama.'
+                            );
+
+                            return;
+
+                        }
+
+
+                        /* Validasi quantity */
+
+                        if (
+                            quantity === '' ||
+                            Number(quantity) <= 0
+                        ) {
+
+                            alert(
+                                'Jumlah kuantitas mutasi harus lebih dari 0.'
+                            );
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Untuk sementara tampilkan konfirmasi.
+                         * Nanti bagian ini bisa diganti dengan
+                         * AJAX / Laravel Controller / Database.
+                         */
+
+                        alert(
+                            'Mutasi antar gudang berhasil disimpan dan siap disinkronkan ke Maximo.'
+                        );
+
+                        closeModal();
+
+                    }
+                );
+
+            }
 
         });
     </script>

@@ -253,7 +253,7 @@
                             </option>
 
                             <option value="controlling_instrumen">
-                                Controlling Instrumen
+                                Instrumen
                             </option>
 
                             <option value="gudang">

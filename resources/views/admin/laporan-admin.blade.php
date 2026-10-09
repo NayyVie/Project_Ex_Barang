@@ -8,8 +8,8 @@
 
     <style>
         /* =========================================================
-           LAPORAN & BAST
-        ========================================================= */
+                   LAPORAN & BAST
+                ========================================================= */
 
         .report-page {
             width: 100%;
@@ -18,8 +18,8 @@
         }
 
         /* =========================
-           HEADER
-        ========================= */
+                   HEADER
+                ========================= */
 
         .report-header {
             display: flex;
@@ -95,8 +95,8 @@
 
 
         /* =========================
-           SUMMARY CARD
-        ========================= */
+                   SUMMARY CARD
+                ========================= */
 
         .report-summary {
             display: grid;
@@ -161,8 +161,8 @@
 
 
         /* =========================
-           FILTER
-        ========================= */
+                   FILTER
+                ========================= */
 
         .report-filter {
             background: #ffffff;
@@ -249,8 +249,8 @@
 
 
         /* =========================
-           REPORT CARD
-        ========================= */
+                   REPORT CARD
+                ========================= */
 
         .report-card {
             background: #ffffff;
@@ -309,8 +309,8 @@
 
 
         /* =========================
-           TABLE
-        ========================= */
+                   TABLE
+                ========================= */
 
         .table-wrapper {
             width: 100%;
@@ -406,8 +406,8 @@
 
 
         /* =========================
-           STATUS
-        ========================= */
+                   STATUS
+                ========================= */
 
         .status-badge {
             display: inline-flex;
@@ -437,8 +437,8 @@
 
 
         /* =========================
-           ACTION
-        ========================= */
+                   ACTION
+                ========================= */
 
         .action-group {
             display: flex;
@@ -479,8 +479,8 @@
 
 
         /* =========================
-           PAGINATION
-        ========================= */
+                   PAGINATION
+                ========================= */
 
         .report-footer {
             min-height: 60px;
@@ -528,8 +528,8 @@
 
 
         /* =========================
-           BAST SECTION
-        ========================= */
+                   BAST SECTION
+                ========================= */
 
         .bast-section {
             margin-top: 20px;
@@ -627,8 +627,8 @@
 
 
         /* =========================================================
-           RESPONSIVE
-        ========================================================= */
+                   RESPONSIVE
+                ========================================================= */
 
         @media (max-width: 1200px) {
 
@@ -650,121 +650,412 @@
         }
 
 
+        /* =========================================================
+           MOBILE RESPONSIVE - LAPORAN & BAST
+           Tidak mengubah desain desktop
+        ========================================================= */
+
         @media (max-width: 768px) {
 
+            /* Mencegah halaman melebar ke kanan */
             .report-page {
                 width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow-x: hidden;
             }
 
+            /* HEADER */
             .report-header {
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 8px;
                 align-items: flex-start;
                 flex-direction: column;
-                gap: 14px;
+            }
+
+            .report-heading {
+                width: 100%;
+                min-width: 0;
             }
 
             .report-heading h3 {
-                font-size: 19px;
+                max-width: 100%;
+                word-break: normal;
+                overflow-wrap: break-word;
             }
 
             .report-heading p {
-                font-size: 11px;
+                max-width: 100%;
+                overflow-wrap: break-word;
             }
 
+            /* Tombol header tetap dua kolom */
             .report-actions {
                 width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
             }
 
             .report-btn {
-                flex: 1;
+                width: 100%;
+                min-width: 0;
+                padding: 0 8px;
+                white-space: nowrap;
             }
 
+
+            /* =====================================================
+               SUMMARY CARD
+            ===================================================== */
+
             .report-summary {
-                grid-template-columns: repeat(2, 1fr);
+                width: 100%;
+                grid-template-columns: 1fr 1fr;
                 gap: 10px;
             }
 
             .summary-card {
-                padding: 15px;
-                min-height: 100px;
+                width: 100%;
+                min-width: 0;
+                box-sizing: border-box;
+                overflow: hidden;
             }
 
-            .summary-value {
-                font-size: 21px;
+            .summary-label,
+            .summary-value,
+            .summary-description {
+                max-width: 100%;
+                overflow-wrap: break-word;
+            }
+
+
+            /* =====================================================
+               FILTER
+            ===================================================== */
+
+            .report-filter {
+                width: 100%;
+                box-sizing: border-box;
+                overflow: hidden;
             }
 
             .filter-row {
+                width: 100%;
+                display: grid;
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .filter-group {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .filter-control {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
 
             .filter-search {
+                width: 100%;
                 grid-column: auto;
             }
 
+            .filter-search input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .filter-button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+
+            /* =====================================================
+               REPORT CARD
+            ===================================================== */
+
+            .report-card {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
+
             .report-card-header {
-                align-items: flex-start;
-                flex-direction: column;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .report-card-title {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .report-card-title h4 {
+                line-height: 1.4;
+                overflow-wrap: break-word;
+            }
+
+            .report-card-title p {
+                line-height: 1.5;
+                overflow-wrap: break-word;
             }
 
             .report-status {
-                align-self: flex-start;
+                max-width: 100%;
+                box-sizing: border-box;
             }
 
-            .bast-section {
-                grid-template-columns: 1fr;
+
+            /* =====================================================
+               TABLE
+            ===================================================== */
+
+            .table-wrapper {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                box-sizing: border-box;
             }
+
+            .report-table {
+                min-width: 1050px;
+                width: 1050px;
+                table-layout: auto;
+            }
+
+            /*
+               Tabel tetap menggunakan desain desktop,
+               tetapi hanya tabelnya yang bisa digeser horizontal.
+            */
+            .report-table th,
+            .report-table td {
+                white-space: nowrap;
+            }
+
+            .report-table .item-name {
+                white-space: normal;
+                min-width: 170px;
+                max-width: 230px;
+            }
+
+
+            /* =====================================================
+               FOOTER TABLE
+            ===================================================== */
 
             .report-footer {
-                align-items: flex-start;
-                flex-direction: column;
+                width: 100%;
+                box-sizing: border-box;
+                gap: 12px;
+            }
+
+            .report-total {
+                width: 100%;
             }
 
             .pagination {
                 width: 100%;
+                display: flex;
                 justify-content: flex-end;
+                flex-wrap: wrap;
+            }
+
+
+            /* =====================================================
+               BAST
+            ===================================================== */
+
+            .bast-section {
+                width: 100%;
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .bast-card {
+                width: 100%;
+                box-sizing: border-box;
+                min-width: 0;
+            }
+
+            .bast-info {
+                width: 100%;
+                grid-template-columns: 1fr;
+            }
+
+            .bast-info-item {
+                min-width: 0;
+            }
+
+            .bast-info-item strong {
+                overflow-wrap: break-word;
+            }
+
+            .bast-card-actions {
+                width: 100%;
+            }
+
+            .bast-card-actions button {
+                min-width: 0;
             }
         }
 
 
+        /* =========================================================
+           HP KECIL
+        ========================================================= */
+
         @media (max-width: 520px) {
 
+            /* Memberikan sedikit jarak dari topbar mobile */
+            .report-page {
+                margin-top: 6px;
+            }
+
+            /* Header */
+            .report-heading h3 {
+                font-size: 19px;
+                line-height: 1.35;
+            }
+
+            .report-heading p {
+                font-size: 11px;
+                line-height: 1.5;
+            }
+
+
+            /* Tombol */
+            .report-actions {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .report-btn {
+                height: 40px;
+                font-size: 10px;
+                padding: 0 7px;
+                gap: 5px;
+            }
+
+            .report-btn svg {
+                width: 14px;
+                height: 14px;
+            }
+
+
+            /* Summary */
             .report-summary {
                 grid-template-columns: 1fr 1fr;
+                gap: 9px;
             }
 
             .summary-card {
                 padding: 13px;
+                min-height: 100px;
             }
 
             .summary-label {
                 font-size: 9px;
+                line-height: 1.35;
             }
 
             .summary-value {
                 font-size: 18px;
+                line-height: 1.25;
             }
 
             .summary-description {
                 font-size: 9px;
+                line-height: 1.4;
             }
 
-            .report-actions {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
+
+            /* Filter */
+            .report-filter {
+                padding: 14px;
             }
 
-            .report-btn {
-                width: 100%;
-                padding: 0 8px;
+            .filter-row {
+                gap: 11px;
+            }
+
+            .filter-control {
+                height: 44px;
+                font-size: 11px;
+            }
+
+            .filter-button {
+                height: 44px;
+            }
+
+
+            /* Report card */
+            .report-card-header {
+                padding: 14px;
+                gap: 12px;
+            }
+
+            .report-card-title h4 {
+                font-size: 14px;
+            }
+
+            .report-card-title p {
                 font-size: 10px;
+            }
+
+            .report-status {
+                font-size: 9px;
+                padding: 6px 9px;
+            }
+
+
+            /* Table */
+            .table-wrapper {
+                overflow-x: auto;
+                width: 100%;
+            }
+
+            .report-table {
+                min-width: 1050px;
+            }
+
+
+            /* Footer */
+            .report-footer {
+                padding: 12px 14px;
+            }
+
+            .pagination {
+                justify-content: flex-start;
+            }
+
+
+            /* BAST */
+            .bast-card {
+                padding: 15px;
             }
 
             .bast-info {
                 grid-template-columns: 1fr;
+                gap: 11px;
             }
 
             .bast-card-actions {
-                display: grid;
                 grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .bast-card-actions button {
+                width: 100%;
+                padding: 0 8px;
+                font-size: 9px;
             }
         }
     </style>

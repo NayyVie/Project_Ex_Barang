@@ -157,7 +157,8 @@
         .menu-title {
             font-size: 10px;
             font-weight: 600;
-            color: #7c8ba2;
+            color: #b4bac4;
+            /* color: #7c8ba2; */
             text-transform: uppercase;
             margin: 18px 12px 8px;
         }
@@ -1249,7 +1250,9 @@
                 <a href="{{ route('laporanAdmin') }}"
                     class="menu-item {{ request()->routeIs('laporanAdmin') ? 'active' : '' }}">
 
-                    <span class="menu-icon">▤</span>
+                    <span class="menu-icon">
+                        <img src="{{ asset('assets/images/icon-laporan2.png') }}" alt="Icon Laporan">
+                    </span>
 
                     <span>Laporan & BAST</span>
 

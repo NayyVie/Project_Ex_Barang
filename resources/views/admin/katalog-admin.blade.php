@@ -48,8 +48,8 @@
 
 
         /* =====================================================
-                                                                                                                                                                                                                                                                                                           FILTER
-                                                                                                                                                                                                                                                                                                        ===================================================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                       FILTER
+                                                                                                                                                                                                                                                                                                                                                                                                                                    ===================================================== */
 
         .catalog-filter {
             min-height: 70px;
@@ -171,8 +171,8 @@
 
 
         /* =====================================================
-                                                                                                                                                                                                                                                                                                           TABLE
-                                                                                                                                                                                                                                                                                                        ===================================================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                       TABLE
+                                                                                                                                                                                                                                                                                                                                                                                                                                    ===================================================== */
 
         .catalog-table-wrapper {
             background: #ffffff;
@@ -393,26 +393,585 @@
         }
 
         .table-icon-button {
-            width: 24px;
-            height: 24px;
-
-            border: none;
-            background: transparent;
-
-            color: #6e7e98;
-
             cursor: pointer;
-            font-size: 15px;
+            border: none;
         }
 
-        .table-icon-button:hover {
+        /* =========================================================
+                                                                                               MODAL BARCODE
+                                                                                            ========================================================= */
+
+        .barcode-modal-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+
+            background: rgba(4, 12, 30, 0.68);
+
+            z-index: 10000;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity .2s ease,
+                visibility .2s ease;
+        }
+
+        .barcode-modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* =========================================================
+                                                                                               MODAL
+                                                                                            ========================================================= */
+
+        .barcode-modal {
+            width: 100%;
+            max-width: 470px;
+
+            background: #ffffff;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(15, 39, 70, .30);
+
+            transform:
+                translateY(10px) scale(.98);
+
+            transition:
+                transform .2s ease;
+        }
+
+        .barcode-modal-overlay.show .barcode-modal {
+            transform:
+                translateY(0) scale(1);
+        }
+
+
+        /* =========================================================
+                                                                                               HEADER
+                                                                                            ========================================================= */
+
+        .barcode-modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            padding: 20px 22px;
+
+            border-bottom: 1px solid #e8edf3;
+
+            background: #ffffff;
+        }
+
+        .barcode-modal-header h2 {
+            margin: 0 0 4px;
+
+            color: #123b68;
+
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .barcode-modal-header p {
+            margin: 0;
+
+            color: #7b91a8;
+
+            font-size: 10px;
+        }
+
+        .barcode-modal-close {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+            border-radius: 7px;
+
+            background: transparent;
+
+            color: #7890a7;
+
+            font-size: 25px;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+        .barcode-modal-close:hover {
+            background: #f0f5fa;
+            color: #164e82;
+        }
+
+
+        /* =========================================================
+                                                                                               BODY
+                                                                                            ========================================================= */
+
+        .barcode-modal-body {
+            padding: 25px;
+            background: #f7faff;
+        }
+
+
+        /* =========================================================
+                                                                                               LABEL
+                                                                                            ========================================================= */
+
+        .barcode-label {
+            width: 100%;
+
+            padding: 22px 20px;
+
+            box-sizing: border-box;
+
+            background: #ffffff;
+
+            border: 1px solid #dce6f2;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow:
+                0 3px 12px rgba(15, 39, 70, .05);
+        }
+
+
+        /* BRAND */
+
+        .barcode-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-bottom: 12px;
+
+            color: #123b68;
+        }
+
+        .barcode-brand strong {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .barcode-brand span {
+            color: #6e8299;
+
+            font-size: 10px;
+        }
+
+
+        /* ITEM NUMBER */
+
+        .barcode-item-number {
+            margin-bottom: 5px;
+
+            color: #075dcc;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            letter-spacing: .5px;
+        }
+
+
+        /* DESCRIPTION */
+
+        .barcode-description {
+            max-width: 370px;
+
+            margin: 0 auto 13px;
+
+            color: #526680;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        /* LOCATION */
+
+        .barcode-location {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            margin-bottom: 17px;
+
+            color: #7b91a8;
+
+            font-size: 10px;
+        }
+
+        .barcode-location strong {
+            color: #263d5b;
+        }
+
+
+        /* BARCODE */
+
+        .barcode-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+
+            min-height: 95px;
+
+            margin: 5px 0 8px;
+        }
+
+        #barcodeImage {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+        /* CODE */
+
+        .barcode-code {
+            margin-top: 3px;
+
+            color: #526680;
+
+            font-family: monospace;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+                                                                                               FOOTER
+                                                                                            ========================================================= */
+
+        .barcode-modal-footer {
+            display: flex;
+
+            justify-content: flex-end;
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 15px 22px;
+
+            border-top: 1px solid #e8edf3;
+
+            background: #ffffff;
+        }
+
+
+        /* BATAL */
+
+        .barcode-btn-cancel {
+            height: 34px;
+
+            padding: 0 14px;
+
+            border: 1px solid #d8e2ec;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #526680;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 10px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+        .barcode-btn-cancel:hover {
+            background: #f4f7fa;
+        }
+
+
+        /* PRINT */
+
+        .barcode-btn-print {
+            height: 34px;
+
+            padding: 0 15px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 6px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: linear-gradient(135deg,
+                    #0874c9,
+                    #0756a8);
+
             color: #ffffff;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 10px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 4px 10px rgba(7, 86, 168, .18);
+
+            transition: .2s ease;
+        }
+
+        .barcode-btn-print:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 6px 14px rgba(7, 86, 168, .24);
+        }
+
+
+        /* =========================================================
+                                                                                               PRINT
+                                                                                            ========================================================= */
+
+        @media print {
+
+            @page {
+                size: auto;
+                margin: 10mm;
+            }
+
+            body * {
+                visibility: hidden !important;
+            }
+
+            #barcodeModal,
+            #barcodeModal * {
+                visibility: visible !important;
+            }
+
+            #barcodeModal {
+                position: absolute !important;
+
+                inset: 0 !important;
+
+                display: flex !important;
+
+                align-items: center !important;
+                justify-content: center !important;
+
+                background: #ffffff !important;
+
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            .barcode-modal {
+                max-width: 470px;
+
+                box-shadow: none !important;
+
+                border: 1px solid #dce6f2;
+            }
+
+            .barcode-modal-header,
+            .barcode-modal-footer {
+                display: none !important;
+            }
+
+            .barcode-modal-body {
+                padding: 0 !important;
+
+                background: #ffffff !important;
+            }
+
+            .barcode-label {
+                box-shadow: none !important;
+
+                border: 1px solid #dce6f2 !important;
+            }
+        }
+
+        /* =========================================================
+                                   POPUP KONFIRMASI DELETE
+                                   Tidak mengubah desain halaman katalog
+                                ========================================================= */
+
+        .delete-confirm-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(15, 31, 55, .45);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+        }
+
+        .delete-confirm-overlay.show {
+            display: flex;
+        }
+
+        .delete-confirm-modal {
+            width: 390px;
+            max-width: calc(100% - 40px);
+
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            padding: 28px 30px 24px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 50px rgba(15, 39, 70, .20);
+
+            animation: deleteModalShow .18s ease-out;
+        }
+
+        @keyframes deleteModalShow {
+
+            from {
+                opacity: 0;
+                transform: translateY(-8px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+        .delete-confirm-icon {
+            width: 48px;
+            height: 48px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #fff1f1;
+
+            color: #e53935;
+
+            font-size: 21px;
+        }
+
+        .delete-confirm-modal h3 {
+            margin: 0 0 8px;
+
+            color: #17365d;
+
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .delete-confirm-modal p {
+            margin: 0 auto;
+
+            max-width: 300px;
+
+            color: #71839a;
+
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .delete-confirm-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 22px;
+        }
+
+        .delete-btn-no,
+        .delete-btn-yes {
+            height: 35px;
+
+            min-width: 85px;
+
+            padding: 0 18px;
+
+            border-radius: 6px;
+
+            font-family: inherit;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .2s ease;
+        }
+
+        .delete-btn-no {
+            border: 1px solid #dce4ef;
+
+            background: #ffffff;
+
+            color: #53677f;
+        }
+
+        .delete-btn-no:hover {
+            background: #f5f7fa;
+        }
+
+        .delete-btn-yes {
+            border: 1px solid #e53935;
+
+            background: #e53935;
+
+            color: #ffffff;
+        }
+
+        .delete-btn-yes:hover {
+            background: #d93232;
         }
 
         /* TOMBOL TAMBAH SPARE PART BARU  */
         /* =========================================================
-       BUTTON TAMBAH SPARE PART
-    ========================================================= */
+                                                                                                                                   BUTTON TAMBAH SPARE PART
+                                                                                                                                ========================================================= */
 
         .btn-add-spare-part {
             display: inline-flex;
@@ -466,8 +1025,8 @@
 
 
         /* =========================================================
-       MODAL OVERLAY
-    ========================================================= */
+                                                                                                                                   MODAL OVERLAY
+                                                                                                                                ========================================================= */
 
         .spare-part-modal-overlay {
             position: fixed;
@@ -478,11 +1037,9 @@
             align-items: center;
             justify-content: center;
 
-            padding: 20px;
+            padding: 24px;
 
-            background: rgba(7, 32, 61, .48);
-
-            backdrop-filter: blur(3px);
+            background: rgba(4, 12, 30, 0.72);
 
             z-index: 9999;
 
@@ -500,25 +1057,25 @@
 
 
         /* =========================================================
-       MODAL
-    ========================================================= */
+                                                                                                                                   MODAL
+                                                                                                                                ========================================================= */
 
         .spare-part-modal {
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
 
             max-height: 92vh;
 
             background: #ffffff;
 
-            border-radius: 16px;
+            border-radius: 10px;
 
             box-shadow:
-                0 20px 50px rgba(0, 31, 63, .22);
+                0 25px 60px rgba(0, 0, 0, .45);
 
             overflow: hidden;
 
-            transform: translateY(15px) scale(.98);
+            transform: translateY(10px) scale(.98);
 
             transition: transform .2s ease;
         }
@@ -529,8 +1086,8 @@
 
 
         /* =========================================================
-       MODAL HEADER
-    ========================================================= */
+                                                                                                                                   MODAL HEADER
+                                                                                                                                ========================================================= */
 
         .spare-part-modal-header {
             display: flex;
@@ -592,8 +1149,8 @@
 
 
         /* =========================================================
-       BODY
-    ========================================================= */
+                                                                                                                                   BODY
+                                                                                                                                ========================================================= */
 
         .spare-part-modal-body {
             padding: 24px 26px;
@@ -605,8 +1162,8 @@
 
 
         /* =========================================================
-       FORM
-    ========================================================= */
+                                                                                                                                   FORM
+                                                                                                                                ========================================================= */
 
         .form-row {
             display: grid;
@@ -655,8 +1212,8 @@
 
 
         /* =========================================================
-       INPUT
-    ========================================================= */
+                                                                                                                                   INPUT
+                                                                                                                                ========================================================= */
 
         .form-control {
             width: 100%;
@@ -711,19 +1268,21 @@
 
 
         /* =========================================================
-       FOOTER
-    ========================================================= */
+                                                                                                                                   FOOTER
+                                                                                                                                ========================================================= */
 
         .spare-part-modal-footer {
             display: flex;
-            align-items: center;
+
             justify-content: flex-end;
 
-            gap: 10px;
+            align-items: center;
 
-            padding: 16px 26px;
+            gap: 8px;
 
-            border-top: 1px solid #e8edf3;
+            padding: 7px 22px;
+
+            border-top: 1px solid #c2c8d3be;
 
             background: #ffffff;
         }
@@ -732,59 +1291,49 @@
         /* BATAL */
 
         .btn-modal-cancel {
-            height: 40px;
+            height: 34px;
 
-            padding: 0 18px;
+            padding: 0 13px;
 
-            border: 1px solid #d4e0eb;
+            border-radius: 6px;
 
-            border-radius: 8px;
+            border: none;
 
-            background: #ffffff;
+            background: #185bd1;
 
-            color: #526b83;
+            color: #ffffff;
 
-            font-family: 'Poppins', sans-serif;
+            font-family: inherit;
 
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11px;
 
             cursor: pointer;
-
-            transition: .2s ease;
         }
 
         .btn-modal-cancel:hover {
-            background: #f4f7fa;
+            background: #1c64d1de;
         }
 
 
         /* SIMPAN */
 
         .btn-modal-save {
-            height: 40px;
+            height: 34px;
 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            gap: 7px;
-
-            padding: 0 18px;
+            padding: 0 15px;
 
             border: none;
 
-            border-radius: 8px;
+            border-radius: 6px;
 
-            background: linear-gradient(135deg,
-                    #0874c9,
-                    #0756a8);
+            background: #185bd1;
 
             color: #ffffff;
 
-            font-family: 'Poppins', sans-serif;
+            font-family: inherit;
 
-            font-size: 12px;
+            font-size: 11px;
+
             font-weight: 600;
 
             cursor: pointer;
@@ -793,17 +1342,12 @@
         }
 
         .btn-modal-save:hover {
-            box-shadow: 0 5px 14px rgba(7, 86, 168, .2);
+            background: #1c64d1de;
         }
-
-        .btn-modal-save span {
-            font-size: 14px;
-        }
-
 
         /* =====================================================
-                                                                                                                                                                                                                                                                                                           RESPONSIVE
-                                                                                                                                                                                                                                                                                                        ===================================================== */
+                                                                                                                                                                                                                                                                                                                                                                                                                                       RESPONSIVE
+                                                                                                                                                                                                                                                                                                                                                                                                                                    ===================================================== */
 
         @media (max-width: 900px) {
 
@@ -833,8 +1377,8 @@
 
         /* RESPONSIVE UNTUK TOMBOL TAMBAH SPARE PART BARU */
         /* =========================================================
-       RESPONSIVE MODAL
-    ========================================================= */
+                                                                                                                                   RESPONSIVE MODAL
+                                                                                                                                ========================================================= */
 
         @media (max-width: 768px) {
 
@@ -878,12 +1422,12 @@
             }
 
             .spare-part-modal-footer {
-                padding: 14px 18px;
+                padding: 12px 16px;
             }
 
             .btn-modal-cancel,
             .btn-modal-save {
-                flex: 1;
+                width: 100%;
             }
 
             .btn-add-spare-part {
@@ -914,15 +1458,8 @@
             }
 
             .spare-part-modal-footer {
-                padding: 12px 16px;
-                gap: 7px;
-            }
-
-            .btn-modal-cancel,
-            .btn-modal-save {
-                height: 38px;
-                padding: 0 10px;
-                font-size: 11px;
+                flex-direction: column-reverse;
+                align-items: stretch;
             }
         }
     </style>
@@ -936,10 +1473,6 @@
 
     </button>
 
-    {{-- <button type="button" class="btn-add-spare-part" id="openSparePartModal">
-    <span class="btn-add-icon">+</span>
-    Tambah Spare Part Baru
-</button> --}}
 
 
     {{-- =====================================================
@@ -1196,12 +1729,14 @@
 
                         <div class="action-buttons">
 
-                            <button class="table-icon-button">
-                                ◉
-                            </button>
+                            <a href="{{ url('/katalogAdmin/edit/CF-077421') }}" class="table-icon-button">
+                                <img src="{{ asset('assets/images/icon-edit.png') }}" alt="Icon Edit"
+                                    style="width: 15px; height:15px">
+                            </a>
 
                             <button class="table-icon-button">
-                                ♢
+                                <img src="{{ asset('assets/images/icon-delete.png') }}" alt="Icon Delete"
+                                    style="width: 15px; height:15px">
                             </button>
 
                         </div>
@@ -1310,11 +1845,13 @@
                         <div class="action-buttons">
 
                             <button class="table-icon-button">
-                                ◉
+                                <img src="{{ asset('assets/images/icon-edit.png') }}" alt="Icon Edit"
+                                    style="width: 15px; height:15px">
                             </button>
 
                             <button class="table-icon-button">
-                                ♢
+                                <img src="{{ asset('assets/images/icon-delete.png') }}" alt="Icon Delete"
+                                    style="width: 15px; height:15px">
                             </button>
 
                         </div>
@@ -1423,11 +1960,13 @@
                         <div class="action-buttons">
 
                             <button class="table-icon-button">
-                                ◉
+                                <img src="{{ asset('assets/images/icon-edit.png') }}" alt="Icon Edit"
+                                    style="width: 15px; height:15px">
                             </button>
 
                             <button class="table-icon-button">
-                                ♢
+                                <img src="{{ asset('assets/images/icon-delete.png') }}" alt="Icon Delete"
+                                    style="width: 15px; height:15px">
                             </button>
 
                         </div>
@@ -1536,11 +2075,13 @@
                         <div class="action-buttons">
 
                             <button class="table-icon-button">
-                                ◉
+                                <img src="{{ asset('assets/images/icon-edit.png') }}" alt="Icon Edit"
+                                    style="width: 15px; height:15px">
                             </button>
 
                             <button class="table-icon-button">
-                                ♢
+                                <img src="{{ asset('assets/images/icon-delete.png') }}" alt="Icon Delete"
+                                    style="width: 15px; height:15px">
                             </button>
 
                         </div>
@@ -1633,7 +2174,8 @@
                         <button class="btn-print">
 
                             <span>
-                                ▦
+                                <img src="{{ asset('assets/images/icon-barcode2.png') }}" alt="Icon Barcode"
+                                    style="width: 20px; height:20px">
                             </span>
 
                             Cetak Label
@@ -1648,11 +2190,13 @@
                         <div class="action-buttons">
 
                             <button class="table-icon-button">
-                                ◉
+                                <img src="{{ asset('assets/images/icon-edit.png') }}" alt="Icon Edit"
+                                    style="width: 15px; height:15px">
                             </button>
 
                             <button class="table-icon-button">
-                                ♢
+                                <img src="{{ asset('assets/images/icon-delete.png') }}" alt="Icon Delete"
+                                    style="width: 15px; height:15px">
                             </button>
 
                         </div>
@@ -1745,7 +2289,8 @@
                         <button class="btn-print">
 
                             <span>
-                                ▦
+                                <img src="{{ asset('assets/images/icon-barcode2.png') }}" alt="Icon Barcode"
+                                    style="width: 20px; height:20px">
                             </span>
 
                             Cetak Label
@@ -1760,11 +2305,13 @@
                         <div class="action-buttons">
 
                             <button class="table-icon-button">
-                                ◉
+                                <img src="{{ asset('assets/images/icon-edit.png') }}" alt="Icon Edit"
+                                    style="width: 15px; height:15px">
                             </button>
 
                             <button class="table-icon-button">
-                                ♢
+                                <img src="{{ asset('assets/images/icon-delete.png') }}" alt="Icon Delete"
+                                    style="width: 15px; height:15px">
                             </button>
 
                         </div>
@@ -1780,9 +2327,124 @@
 
     </div>
 
+    {{-- =========================================================
+     MODAL BARCODE BARANG
+========================================================= --}}
+    <div class="barcode-modal-overlay" id="barcodeModal">
+
+        <div class="barcode-modal">
+
+            {{-- HEADER --}}
+            <div class="barcode-modal-header">
+
+                <div>
+                    <h2>Label Spare Part</h2>
+
+                    <p>
+                        Barcode material dari katalog master
+                    </p>
+                </div>
+
+                <button type="button" class="barcode-modal-close" id="closeBarcodeModal">
+                    &times;
+                </button>
+
+            </div>
+
+
+            {{-- BODY --}}
+            <div class="barcode-modal-body">
+
+                <div class="barcode-label">
+
+                    <div class="barcode-brand">
+                        <strong>PLN</strong>
+                        <span>Nusantara Power Services</span>
+                    </div>
+
+                    <div class="barcode-item-number" id="barcodeItemNumber">
+                        -
+                    </div>
+
+                    <div class="barcode-description" id="barcodeDescription">
+                        -
+                    </div>
+
+                    <div class="barcode-location">
+                        <span>Lokasi:</span>
+                        <strong id="barcodeLocation">-</strong>
+                    </div>
+
+                    <div class="barcode-image-wrapper">
+
+                        <svg id="barcodeImage"></svg>
+
+                    </div>
+
+                    <div class="barcode-code" id="barcodeCode">
+                        -
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {{-- FOOTER --}}
+            <div class="barcode-modal-footer">
+
+                <button type="button" class="barcode-btn-cancel" id="cancelBarcodeModal">
+                    Batal
+                </button>
+
+                <button type="button" class="barcode-btn-print" id="printBarcode">
+                    Cetak Barcode
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {{-- =========================================================
+     MODAL KONFIRMASI DELETE
+========================================================= --}}
+    <div class="delete-confirm-overlay" id="deleteConfirmModal">
+
+        <div class="delete-confirm-modal">
+
+            <div class="delete-confirm-icon">
+                <img src="{{ asset('assets/images/icon-delete.png') }}" alt="icon Delete"
+                    style="width: 20px; height:20px">
+            </div>
+
+            <h3>Apakah Anda yakin menghapusnya?</h3>
+
+            <p>
+                Data barang yang dihapus tidak akan ditampilkan lagi
+                pada katalog master.
+            </p>
+
+            <div class="delete-confirm-buttons">
+
+                <button type="button" class="delete-btn-no" id="deleteBtnNo">
+                    Tidak
+                </button>
+
+                <button type="button" class="delete-btn-yes" id="deleteBtnYes">
+                    Iya
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <!-- =========================================================
-         MODAL TAMBAH SPARE PART BARU
-    ========================================================= -->
+                                                                                                                                     MODAL TAMBAH SPARE PART BARU
+                                                                                                                                ========================================================= -->
     <div class="spare-part-modal-overlay" id="sparePartModal">
 
         <div class="spare-part-modal">
@@ -1803,193 +2465,187 @@
             </div>
 
 
-            <!-- FORM -->
-            <form id="sparePartForm">
+            <div class="spare-part-modal-body">
 
-                <div class="spare-part-modal-body">
+                <!-- BARIS 1 -->
+                <div class="form-row">
 
-                    <!-- BARIS 1 -->
-                    <div class="form-row">
-
-                        <div class="form-group">
-                            <label for="item_number">
-                                Item Number Maximo <span>*</span>
-                            </label>
-
-                            <input type="text" id="item_number" name="item_number" class="form-control"
-                                placeholder="Contoh: MP-033181">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="kategori_material">
-                                Kategori Material <span>*</span>
-                            </label>
-
-                            <select id="kategori_material" name="kategori_material" class="form-control">
-
-                                <option value="">Pilih kategori material</option>
-                                <option value="mekanikal">Mekanikal</option>
-                                <option value="elektrikal">Elektrikal</option>
-                                <option value="instrumentasi">Instrumentasi</option>
-                                <option value="sipil">Sipil</option>
-                                <option value="lainnya">Lainnya</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-
-
-                    <!-- DESKRIPSI -->
                     <div class="form-group">
-                        <label for="deskripsi_spare_part">
-                            Deskripsi Spare Part <span>*</span>
+                        <label for="item_number">
+                            Item Number Maximo <span>*</span>
                         </label>
 
-                        <input type="text" id="deskripsi_spare_part" name="deskripsi_spare_part" class="form-control"
-                            placeholder="Misal: High Pressure Boiler Tube SA-213 T22 OD 50.8mm">
+                        <input type="text" id="item_number" name="item_number" class="form-control"
+                            placeholder="Contoh: MP-033181">
                     </div>
 
 
-                    <!-- SPESIFIKASI -->
                     <div class="form-group">
-                        <label for="spesifikasi_teknis">
-                            Spesifikasi Teknis / Part Number Pabrikan
+                        <label for="kategori_material">
+                            Kategori Material <span>*</span>
                         </label>
 
-                        <textarea id="spesifikasi_teknis" name="spesifikasi_teknis" class="form-control textarea" rows="3"
-                            placeholder="Material, toleransi tekanan/suhu, standar ASTM, manufaktur..."></textarea>
-                    </div>
+                        <select id="kategori_material" name="kategori_material" class="form-control">
 
+                            <option value="">Pilih kategori material</option>
+                            <option value="mekanikal">Mekanikal</option>
+                            <option value="elektrikal">Elektrikal</option>
+                            <option value="instrumentasi">Instrumentasi</option>
+                            <option value="sipil">Sipil</option>
+                            <option value="lainnya">Lainnya</option>
 
-                    <!-- BARIS 2 -->
-                    <div class="form-row three-column">
-
-                        <div class="form-group">
-                            <label for="lokasi_bin">
-                                Lokasi Bin / Rak <span>*</span>
-                            </label>
-
-                            <input type="text" id="lokasi_bin" name="lokasi_bin" class="form-control"
-                                placeholder="RAK-A-01-01">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="satuan_ukur">
-                                Satuan Ukur (UoM) <span>*</span>
-                            </label>
-
-                            <select id="satuan_ukur" name="satuan_ukur" class="form-control">
-
-                                <option value="">Pilih satuan</option>
-                                <option value="pcs">PCS (Buah)</option>
-                                <option value="set">SET</option>
-                                <option value="kg">KG</option>
-                                <option value="ltr">LTR</option>
-                                <option value="mtr">MTR</option>
-
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="unit_pembangkit">
-                                Unit Pembangkit
-                            </label>
-
-                            <select id="unit_pembangkit" name="unit_pembangkit" class="form-control">
-
-                                <option value="">Pilih unit</option>
-                                <option value="pltu_unit_1_2">
-                                    PLTU Unit 1-2
-                                </option>
-
-                                <option value="pltu_unit_3_4">
-                                    PLTU Unit 3-4
-                                </option>
-
-                                <option value="pltu_unit_5_6">
-                                    PLTU Unit 5-6
-                                </option>
-
-                                <option value="pltg">
-                                    PLTG
-                                </option>
-
-                                <option value="plts">
-                                    PLTS
-                                </option>
-
-                            </select>
-                        </div>
-
-                    </div>
-
-
-                    <!-- BARIS 3 -->
-                    <div class="form-row four-column">
-
-                        <div class="form-group">
-                            <label for="stok_fisik">
-                                Stok Fisik
-                            </label>
-
-                            <input type="number" id="stok_fisik" name="stok_fisik" class="form-control" value="0"
-                                min="0">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="stok_maximo">
-                                Stok Maximo
-                            </label>
-
-                            <input type="number" id="stok_maximo" name="stok_maximo" class="form-control"
-                                value="0" min="0">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="reorder_point">
-                                Reorder Point (ROP)
-                            </label>
-
-                            <input type="number" id="reorder_point" name="reorder_point" class="form-control"
-                                value="0" min="0">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="harga_satuan">
-                                Harga Satuan (IDR)
-                            </label>
-
-                            <input type="number" id="harga_satuan" name="harga_satuan" class="form-control"
-                                value="0" min="0" placeholder="1500000">
-                        </div>
-
+                        </select>
                     </div>
 
                 </div>
 
 
-                <!-- FOOTER -->
-                <div class="spare-part-modal-footer">
+                <!-- DESKRIPSI -->
+                <div class="form-group">
+                    <label for="deskripsi_spare_part">
+                        Deskripsi Spare Part <span>*</span>
+                    </label>
 
-                    <button type="button" class="btn-modal-cancel" id="cancelSparePartModal">
-                        Batal
-                    </button>
+                    <input type="text" id="deskripsi_spare_part" name="deskripsi_spare_part" class="form-control"
+                        placeholder="Misal: High Pressure Boiler Tube SA-213 T22 OD 50.8mm">
+                </div>
 
-                    <button type="submit" class="btn-modal-save">
-                        <span>✓</span>
-                        Simpan & Sinkronkan
-                    </button>
+
+                <!-- SPESIFIKASI -->
+                <div class="form-group">
+                    <label for="spesifikasi_teknis">
+                        Spesifikasi Teknis / Part Number Pabrikan
+                    </label>
+
+                    <textarea id="spesifikasi_teknis" name="spesifikasi_teknis" class="form-control textarea" rows="3"
+                        placeholder="Material, toleransi tekanan/suhu, standar ASTM, manufaktur..."></textarea>
+                </div>
+
+
+                <!-- BARIS 2 -->
+                <div class="form-row three-column">
+
+                    <div class="form-group">
+                        <label for="lokasi_bin">
+                            Lokasi Bin / Rak <span>*</span>
+                        </label>
+
+                        <input type="text" id="lokasi_bin" name="lokasi_bin" class="form-control"
+                            placeholder="RAK-A-01-01">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="satuan_ukur">
+                            Satuan Ukur (UoM) <span>*</span>
+                        </label>
+
+                        <select id="satuan_ukur" name="satuan_ukur" class="form-control">
+
+                            <option value="">Pilih satuan</option>
+                            <option value="pcs">PCS (Buah)</option>
+                            <option value="set">SET</option>
+                            <option value="kg">KG</option>
+                            <option value="ltr">LTR</option>
+                            <option value="mtr">MTR</option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="unit_pembangkit">
+                            Unit Pembangkit
+                        </label>
+
+                        <select id="unit_pembangkit" name="unit_pembangkit" class="form-control">
+
+                            <option value="">Pilih unit</option>
+                            <option value="pltu_unit_1_2">
+                                PLTU Unit 1-2
+                            </option>
+
+                            <option value="pltu_unit_3_4">
+                                PLTU Unit 3-4
+                            </option>
+
+                            <option value="pltu_unit_5_6">
+                                PLTU Unit 5-6
+                            </option>
+
+                            <option value="pltg">
+                                PLTG
+                            </option>
+
+                            <option value="plts">
+                                PLTS
+                            </option>
+
+                        </select>
+                    </div>
 
                 </div>
 
-            </form>
+
+                <!-- BARIS 3 -->
+                <div class="form-row four-column">
+
+                    <div class="form-group">
+                        <label for="stok_fisik">
+                            Stok Fisik
+                        </label>
+
+                        <input type="number" id="stok_fisik" name="stok_fisik" class="form-control" value="0"
+                            min="0">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="stok_maximo">
+                            Stok Maximo
+                        </label>
+
+                        <input type="number" id="stok_maximo" name="stok_maximo" class="form-control" value="0"
+                            min="0">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="reorder_point">
+                            Reorder Point (ROP)
+                        </label>
+
+                        <input type="number" id="reorder_point" name="reorder_point" class="form-control"
+                            value="0" min="0">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="harga_satuan">
+                            Harga Satuan (IDR)
+                        </label>
+
+                        <input type="number" id="harga_satuan" name="harga_satuan" class="form-control" value="0"
+                            min="0" placeholder="1500000">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <div class="spare-part-modal-footer">
+
+                <button type="button" class="btn-modal-cancel" id="cancelSparePartModal">
+                    Batal
+                </button>
+
+                <button type="submit" class="btn-modal-save">
+                    Simpan & Sinkronkan
+                </button>
+
+            </div>
 
         </div>
 
@@ -2102,4 +2758,297 @@
         });
     </script>
 
+
+    {{-- =========================================================
+         LIBRARY BARCODE
+    ========================================================= --}}
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+
+    {{-- =========================================================
+         SCRIPT BARCODE LABEL
+    ========================================================= --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const barcodeModal =
+                document.getElementById('barcodeModal');
+
+            const closeBarcodeModal =
+                document.getElementById('closeBarcodeModal');
+
+            const cancelBarcodeModal =
+                document.getElementById('cancelBarcodeModal');
+
+            const printBarcode =
+                document.getElementById('printBarcode');
+
+            const barcodeImage =
+                document.getElementById('barcodeImage');
+
+            const barcodeItemNumber =
+                document.getElementById('barcodeItemNumber');
+
+            const barcodeDescription =
+                document.getElementById('barcodeDescription');
+
+            const barcodeLocation =
+                document.getElementById('barcodeLocation');
+
+            const barcodeCode =
+                document.getElementById('barcodeCode');
+
+            document.querySelectorAll('.btn-print').forEach(function(button) {
+
+                button.addEventListener('click', function() {
+
+                    const row = this.closest('tr');
+
+                    if (!row) return;
+
+                    const itemNumberElement =
+                        row.querySelector('.item-number');
+
+                    const itemNumber =
+                        itemNumberElement ?
+                        itemNumberElement.textContent.trim() :
+                        '-';
+
+                    const descriptionElement =
+                        row.querySelector('.item-description strong');
+
+                    const description =
+                        descriptionElement ?
+                        descriptionElement.textContent.trim() :
+                        '-';
+
+                    const locationElement =
+                        row.querySelector('.location-badge');
+
+                    const location =
+                        locationElement ?
+                        locationElement.textContent.trim() :
+                        '-';
+
+                    barcodeItemNumber.textContent = itemNumber;
+                    barcodeDescription.textContent = description;
+                    barcodeLocation.textContent = location;
+                    barcodeCode.textContent = itemNumber;
+
+                    // Bersihkan barcode lama
+                    barcodeImage.innerHTML = '';
+
+                    // Generate barcode
+                    if (typeof JsBarcode !== 'undefined') {
+
+                        JsBarcode(
+                            barcodeImage,
+                            itemNumber, {
+                                format: 'CODE128',
+                                width: 2,
+                                height: 70,
+                                displayValue: false,
+                                margin: 5,
+                                background: '#ffffff',
+                                lineColor: '#111827'
+                            }
+                        );
+
+                    } else {
+
+                        console.error('JsBarcode belum tersedia.');
+
+                    }
+
+                    barcodeModal.classList.add('show');
+
+                    document.body.style.overflow = 'hidden';
+
+                });
+
+            });
+
+            function closeBarcode() {
+                barcodeModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            if (closeBarcodeModal) {
+                closeBarcodeModal.addEventListener(
+                    'click',
+                    closeBarcode
+                );
+            }
+
+            if (cancelBarcodeModal) {
+                cancelBarcodeModal.addEventListener(
+                    'click',
+                    closeBarcode
+                );
+            }
+
+            if (barcodeModal) {
+                barcodeModal.addEventListener(
+                    'click',
+                    function(event) {
+
+                        if (event.target === barcodeModal) {
+                            closeBarcode();
+                        }
+
+                    }
+                );
+            }
+
+            document.addEventListener(
+                'keydown',
+                function(event) {
+
+                    if (
+                        event.key === 'Escape' &&
+                        barcodeModal &&
+                        barcodeModal.classList.contains('show')
+                    ) {
+                        closeBarcode();
+                    }
+
+                }
+            );
+
+            if (printBarcode) {
+                printBarcode.addEventListener(
+                    'click',
+                    function() {
+                        window.print();
+                    }
+                );
+            }
+
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const deleteModal =
+                document.getElementById('deleteConfirmModal');
+
+            const deleteBtnNo =
+                document.getElementById('deleteBtnNo');
+
+            const deleteBtnYes =
+                document.getElementById('deleteBtnYes');
+
+            let rowToDelete = null;
+
+
+            /* =====================================================
+               KLIK ICON DELETE
+            ===================================================== */
+
+            document.querySelectorAll('.action-buttons').forEach(function(action) {
+
+                const buttons =
+                    action.querySelectorAll('.table-icon-button');
+
+                // Tombol kedua = Delete
+                if (buttons.length >= 2) {
+
+                    buttons[1].addEventListener('click', function() {
+
+                        // Ambil baris tabel
+                        rowToDelete = this.closest('tr');
+
+                        // Tampilkan popup
+                        deleteModal.classList.add('show');
+
+                        // Supaya halaman belakang tidak ikut scroll
+                        document.body.style.overflow = 'hidden';
+
+                    });
+
+                }
+
+            });
+
+
+            /* =====================================================
+               TOMBOL "TIDAK"
+            ===================================================== */
+
+            deleteBtnNo.addEventListener('click', function() {
+
+                closeDeleteModal();
+
+            });
+
+
+            /* =====================================================
+               TOMBOL "IYA"
+            ===================================================== */
+
+            deleteBtnYes.addEventListener('click', function() {
+
+                if (rowToDelete) {
+
+                    // Hapus baris barang dari tabel
+                    rowToDelete.remove();
+
+                    rowToDelete = null;
+
+                }
+
+                closeDeleteModal();
+
+            });
+
+
+            /* =====================================================
+               KLIK AREA DI LUAR POPUP
+            ===================================================== */
+
+            deleteModal.addEventListener('click', function(event) {
+
+                if (event.target === deleteModal) {
+
+                    closeDeleteModal();
+
+                }
+
+            });
+
+
+            /* =====================================================
+               ESCAPE
+            ===================================================== */
+
+            document.addEventListener('keydown', function(event) {
+
+                if (
+                    event.key === 'Escape' &&
+                    deleteModal.classList.contains('show')
+                ) {
+
+                    closeDeleteModal();
+
+                }
+
+            });
+
+
+            /* =====================================================
+               FUNGSI CLOSE
+            ===================================================== */
+
+            function closeDeleteModal() {
+
+                deleteModal.classList.remove('show');
+
+                document.body.style.overflow = '';
+
+                rowToDelete = null;
+
+            }
+
+        });
+    </script>
 @endsection

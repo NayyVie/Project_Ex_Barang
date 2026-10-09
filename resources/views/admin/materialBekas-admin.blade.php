@@ -3,7 +3,7 @@
 @section('title', 'Material Bekas & Limbah')
 
 @section('page-title', 'Material Bekas & Limbah')
-@section('page-subtitle', 'Pengelolaan material bekas penggantian pemeliharaan pembangkit')
+@section('page-subtitle', 'Pengelolaan material bekas')
 
 @section('content')
 
@@ -604,8 +604,8 @@
 ===================================================== --}}
     <style>
         /* =========================================
-                                                                                                       MATERIAL PAGE
-                                                                                                    ========================================= */
+                                                                                                               MATERIAL PAGE
+                                                                                                            ========================================= */
 
         .material-page {
             width: 100%;
@@ -615,8 +615,8 @@
 
 
         /* =========================================
-                                                                                                       HEADER
-                                                                                                    ========================================= */
+                                                                                                               HEADER
+                                                                                                            ========================================= */
 
         .material-header {
             display: flex;
@@ -679,8 +679,8 @@
 
 
         /* =========================================
-                                                                                                       BUTTON
-                                                                                                    ========================================= */
+                                                                                                               BUTTON
+                                                                                                            ========================================= */
 
         .btn-primary-material {
             border: none;
@@ -721,8 +721,8 @@
 
 
         /* =========================================
-                                                                                                       SUMMARY
-                                                                                                    ========================================= */
+                                                                                                               SUMMARY
+                                                                                                            ========================================= */
 
         .material-summary {
             display: grid;
@@ -848,8 +848,8 @@
 
 
         /* =========================================
-                                                                                                       FILTER
-                                                                                                    ========================================= */
+                                                                                                               FILTER
+                                                                                                            ========================================= */
 
         .material-filter {
             background: white;
@@ -1006,8 +1006,8 @@
 
 
         /* =========================================
-                                                                                                       TABLE
-                                                                                                    ========================================= */
+                                                                                                               TABLE
+                                                                                                            ========================================= */
 
         .material-table-wrapper {
             width: 100%;
@@ -1127,8 +1127,8 @@
 
 
         /* =========================================
-                                                                                                       TABLE CONTENT
-                                                                                                    ========================================= */
+                                                                                                               TABLE CONTENT
+                                                                                                            ========================================= */
 
         .transaction-number {
             color: #173e6d;
@@ -1287,8 +1287,8 @@
 
 
         /* =========================================
-                                                                                                       STATUS
-                                                                                                    ========================================= */
+                                                                                                               STATUS
+                                                                                                            ========================================= */
 
         .status-badge {
             display: inline-flex;
@@ -1336,8 +1336,8 @@
 
 
         /* =========================================
-                                                                                                       ACTION
-                                                                                                    ========================================= */
+                                                                                                               ACTION
+                                                                                                            ========================================= */
 
         .action-buttons {
             display: flex;
@@ -1376,8 +1376,8 @@
 
 
         /* =========================================
-                                                                                                       RESPONSIVE
-                                                                                                    ========================================= */
+                                                                                                               RESPONSIVE
+                                                                                                            ========================================= */
 
         @media (max-width: 1200px) {
 
@@ -1583,8 +1583,8 @@
 
         /* CARD UNTUK TOMBOL TERIMA LIMBAH */
         /* =========================================
-                                                                                               MODAL PENERIMAAN MATERIAL LIMBAH
-                                                                                            ========================================= */
+                                                                                                       MODAL PENERIMAAN MATERIAL LIMBAH
+                                                                                                    ========================================= */
 
         .limbah-modal-overlay {
             position: fixed;
@@ -1642,8 +1642,8 @@
 
 
         /* =========================================
-                                                                                               HEADER
-                                                                                            ========================================= */
+                                                                                                       HEADER
+                                                                                                    ========================================= */
 
         .limbah-modal-header {
             display: flex;
@@ -1701,8 +1701,8 @@
 
 
         /* =========================================
-                                                                                               BODY
-                                                                                            ========================================= */
+                                                                                                       BODY
+                                                                                                    ========================================= */
 
         .limbah-modal-body {
             padding: 20px 22px;
@@ -1714,8 +1714,8 @@
 
 
         /* =========================================
-                                                                                               FORM
-                                                                                            ========================================= */
+                                                                                                       FORM
+                                                                                                    ========================================= */
 
         .limbah-form-row {
             display: grid;
@@ -1820,8 +1820,8 @@
 
 
         /* =========================================
-                                                                                               JENIS BAHAN
-                                                                                            ========================================= */
+                                                                                                       JENIS BAHAN
+                                                                                                    ========================================= */
 
         .jenis-bahan-options {
             display: grid;
@@ -1868,8 +1868,8 @@
 
 
         /* =========================================
-                                                                                               TOTAL
-                                                                                            ========================================= */
+                                                                                                       TOTAL
+                                                                                                    ========================================= */
 
         .limbah-total-value {
             height: 38px;
@@ -1895,8 +1895,8 @@
 
 
         /* =========================================
-                                                                                               FOOTER
-                                                                                            ========================================= */
+                                                                                                       FOOTER
+                                                                                                    ========================================= */
 
         .limbah-modal-footer {
             display: flex;
@@ -1967,21 +1967,37 @@
         }
 
 
-        /* =========================================
-                                                                                               RESPONSIVE
-                                                                                            ========================================= */
+        /* =====================================================
+           RESPONSIVE MODAL MATERIAL BEKAS / LIMBAH
+           KHUSUS MOBILE
+           DESAIN TETAP SAMA
+        ===================================================== */
 
         @media (max-width: 768px) {
 
             .limbah-modal-overlay {
-                padding: 12px;
+                padding: 10px;
+                overflow: hidden;
             }
 
             .limbah-modal-card {
-                max-height: 95vh;
+                width: 100%;
+                max-width: none;
+
+                /* Modal selalu mengikuti tinggi layar HP */
+                height: calc(100dvh - 20px);
+                max-height: calc(100dvh - 20px);
+
+                display: flex;
+                flex-direction: column;
+
+                min-height: 0;
+                overflow: hidden;
             }
 
+            /* HEADER TETAP */
             .limbah-modal-header {
+                flex: 0 0 auto;
                 padding: 15px 16px;
             }
 
@@ -1989,31 +2005,77 @@
                 font-size: 15px;
             }
 
+            .limbah-modal-header p {
+                font-size: 9px;
+            }
+
+            /* BODY YANG SCROLL */
             .limbah-modal-body {
+                flex: 1 1 auto;
+
+                min-height: 0;
+                max-height: none;
+
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                -webkit-overflow-scrolling: touch;
+                overscroll-behavior: contain;
+
                 padding: 16px;
             }
 
+            /* FORM TETAP 1 KOLOM DI HP */
             .limbah-form-row,
             .limbah-form-row:nth-of-type(2) {
                 grid-template-columns: 1fr;
             }
 
+            /* PILIHAN JENIS BAHAN */
             .jenis-bahan-options {
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
 
+            /* FOOTER SELALU BERADA DI DALAM LAYAR */
             .limbah-modal-footer {
+                flex: 0 0 auto;
+
+                position: relative;
+                z-index: 5;
+
                 padding: 12px 16px;
+                padding-bottom: calc(12px + env(safe-area-inset-bottom));
+
+                touch-action: manipulation;
+            }
+
+            /* TOMBOL TETAP BISA DITEKAN */
+            .btn-limbah-batal,
+            .btn-limbah-simpan {
+                position: relative;
+                z-index: 6;
+                touch-action: manipulation;
             }
         }
 
 
+        /* =====================================================
+           HP KECIL
+        ===================================================== */
+
         @media (max-width: 480px) {
 
-            .jenis-bahan-options {
-                grid-template-columns:
-                    repeat(2, 1fr);
+            .limbah-modal-overlay {
+                padding: 8px;
+            }
+
+            .limbah-modal-card {
+                height: calc(100dvh - 16px);
+                max-height: calc(100dvh - 16px);
+            }
+
+            .limbah-modal-header {
+                padding: 15px 16px;
             }
 
             .limbah-modal-header h3 {
@@ -2022,24 +2084,39 @@
 
             .limbah-modal-header p {
                 font-size: 9px;
+                line-height: 1.5;
             }
 
+            .limbah-modal-body {
+                padding: 16px;
+                padding-bottom: 18px;
+            }
+
+            .jenis-bahan-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Tetap mengikuti desain tombolmu */
             .limbah-modal-footer {
                 flex-direction: column-reverse;
                 align-items: stretch;
+
+                padding: 12px 16px;
+                padding-bottom: calc(12px + env(safe-area-inset-bottom));
             }
 
             .btn-limbah-batal,
             .btn-limbah-simpan {
                 width: 100%;
+                min-height: 34px;
             }
         }
     </style>
 
     {{-- CARD UNTUK TOMBOL TERIMA LIMBAH --}}
     <!-- =========================================
-                                                                                                 MODAL PENERIMAAN MATERIAL BEKAS / LIMBAH
-                                                                                            ========================================= -->
+                                                                                                         MODAL PENERIMAAN MATERIAL BEKAS / LIMBAH
+                                                                                                    ========================================= -->
 
     <div class="limbah-modal-overlay" id="limbahModal">
 

@@ -157,7 +157,7 @@
         .menu-title {
             font-size: 10px;
             font-weight: 600;
-            color: #7c8ba2;
+            color: #b4bac4;
             text-transform: uppercase;
             margin: 18px 12px 8px;
         }
@@ -2334,7 +2334,9 @@
                 <a href="{{ route('laporanAdmin') }}"
                     class="menu-item {{ request()->routeIs('laporanAdmin') ? 'active' : '' }}">
 
-                    <span class="menu-icon">▤</span>
+                    <span class="menu-icon">
+                        <img src="{{ asset('assets/images/icon-laporan2.png') }}" alt="Icon Laporan">
+                    </span>
 
                     <span>Laporan & BAST</span>
 
@@ -2797,7 +2799,8 @@
 
 
                     {{-- SCAN BARCODE --}}
-                    <a href="#" class="quick-action quick-action-dark">
+                    <a href="{{ route('scanBarcode') }}"
+                        class="quick-action quick-action-dark {{ request()->routeIs('scanBarcode') ? 'active' : '' }}">
                         <div class="quick-action-icon">
                             <img src="{{ asset('assets/images/scan-barcode.png') }}" alt="Barcode">
                         </div>
@@ -2818,41 +2821,6 @@
                     </a>
 
                 </section>
-
-
-                {{-- <div class="quick-buttons"> --}}
-
-                {{-- PENERIMAAN BARANG --}}
-                {{-- <button class="quick-btn">
-                            <span class="quick-btn-icon">↙</span>
-                            <span class="quick-btn-text">Penerimaan Barang</span>
-                            <span class="quick-btn-arrow">›</span>
-                        </button> --}}
-
-                {{-- PENGELUARAN BARANG --}}
-                {{-- <button class="quick-btn">
-                            <span class="quick-btn-icon">↗</span>
-                            <span class="quick-btn-text">Pengeluaran Barang</span>
-                            <span class="quick-btn-arrow">›</span>
-                        </button> --}}
-
-                {{-- MUTASI ANTAR GUDANG --}}
-                {{-- <button class="quick-btn">
-                            <span class="quick-btn-icon">⇄</span>
-                            <span class="quick-btn-text">Mutasi Antar Gudang</span>
-                            <span class="quick-btn-arrow">›</span>
-                        </button> --}}
-
-                {{-- SCAN BARCODE --}}
-                {{-- <button class="quick-btn dark">
-                            <span class="quick-btn-icon">▦</span>
-                            <span class="quick-btn-text">Scan Barcode</span>
-                            <span class="quick-btn-arrow">›</span>
-                        </button>
-
-                    </div> --}}
-
-                {{-- </div> --}}
 
 
                 {{-- =========================================

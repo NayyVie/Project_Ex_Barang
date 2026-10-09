@@ -12,16 +12,16 @@
 
     <style>
         /* =====================================================
-                                                                                                                                                           STOK & OPNAME
-                                                                                                                                                           ===================================================== */
+                                                                                                                                                                                           STOK & OPNAME
+                                                                                                                                                                                           ===================================================== */
 
         .stock-page {
             width: 100%;
         }
 
         /* ================================
-                                                                                                                                                           SUMMARY CARDS
-                                                                                                                                                           ================================ */
+                                                                                                                                                                                           SUMMARY CARDS
+                                                                                                                                                                                           ================================ */
 
         .summary-grid {
             display: grid;
@@ -143,8 +143,8 @@
         }
 
         /* ================================
-                                                                                                                                                           FILTER AREA
-                                                                                                                                                           ================================ */
+                                                                                                                                                                                           FILTER AREA
+                                                                                                                                                                                           ================================ */
 
         .filter-card {
             background: #ffffff;
@@ -278,8 +278,8 @@
         }
 
         /* ================================
-                                                                                                                                                           TABLE
-                                                                                                                                                           ================================ */
+                                                                                                                                                                                           TABLE
+                                                                                                                                                                                           ================================ */
 
         .table-card {
             background: #ffffff;
@@ -446,8 +446,8 @@
         }
 
         /* ================================
-                                                                                                                                                           RESPONSIVE
-                                                                                                                                                           ================================ */
+                                                                                                                                                                                           RESPONSIVE
+                                                                                                                                                                                           ================================ */
 
         @media (max-width: 1100px) {
             .summary-grid {
@@ -495,6 +495,523 @@
                 align-items: flex-start;
                 gap: 10px;
             }
+        }
+
+        /* =========================================================
+                           MODAL OPNAME FISIK
+                        ========================================================= */
+
+        .opname-modal-overlay,
+        .sync-modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(15, 31, 55, .45);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 9999;
+        }
+
+        .opname-modal-overlay.show,
+        .sync-modal-overlay.show {
+
+            display: flex;
+        }
+
+
+        /* =========================================================
+                           MODAL OPNAME
+                        ========================================================= */
+
+        .opname-modal {
+
+            width: 470px;
+
+            max-width: calc(100% - 40px);
+
+            background: #ffffff;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 50px rgba(15, 39, 70, .20);
+
+            animation: opnameModalShow .18s ease-out;
+        }
+
+        @keyframes opnameModalShow {
+
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        .opname-modal-header {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            padding: 20px 22px;
+
+            border-bottom: 1px solid #e8edf3;
+        }
+
+        .opname-modal-header h2 {
+
+            margin: 0 0 4px;
+
+            color: #173b69;
+
+            font-size: 17px;
+
+            font-weight: 700;
+        }
+
+        .opname-modal-header p {
+
+            margin: 0;
+
+            color: #8294a9;
+
+            font-size: 10px;
+        }
+
+        .opname-modal-close {
+
+            width: 28px;
+            height: 28px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #7d91a7;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+
+        /* BODY */
+
+        .opname-modal-body {
+
+            padding: 20px 22px;
+
+            background: #f8faff;
+        }
+
+
+        /* INFO */
+
+        .opname-info {
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr 1fr;
+
+            gap: 10px;
+
+            margin-bottom: 18px;
+        }
+
+        .opname-info-item {
+
+            padding: 11px;
+
+            background: #ffffff;
+
+            border: 1px solid #e3eaf3;
+
+            border-radius: 7px;
+        }
+
+        .opname-info-item span {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+            color: #8a9bad;
+
+            font-size: 9px;
+        }
+
+        .opname-info-item strong {
+
+            display: block;
+
+            color: #23466f;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        /* FORM */
+
+        .opname-form-group {
+
+            margin-bottom: 15px;
+        }
+
+        .opname-form-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #294462;
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+        .opname-input-wrapper {
+
+            position: relative;
+        }
+
+        .opname-input-wrapper input {
+
+            width: 100%;
+
+            height: 39px;
+
+            box-sizing: border-box;
+
+            padding: 0 55px 0 12px;
+
+            border: 1px solid #dce4ef;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #263d5b;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            outline: none;
+        }
+
+        .opname-input-wrapper input:focus {
+
+            border-color: #0874c9;
+
+            box-shadow:
+                0 0 0 3px rgba(8, 116, 201, .08);
+        }
+
+        .opname-input-wrapper span {
+
+            position: absolute;
+
+            right: 12px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #8294a9;
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+        .opname-form-group textarea {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 10px 12px;
+
+            border: 1px solid #dce4ef;
+
+            border-radius: 7px;
+
+            background: #ffffff;
+
+            color: #263d5b;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            resize: vertical;
+
+            outline: none;
+        }
+
+        .opname-form-group textarea:focus {
+
+            border-color: #0874c9;
+
+            box-shadow:
+                0 0 0 3px rgba(8, 116, 201, .08);
+        }
+
+
+        /* FOOTER */
+
+        .opname-modal-footer {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+
+            padding: 14px 22px;
+
+            border-top: 1px solid #e8edf3;
+
+            background: #ffffff;
+        }
+
+        .opname-btn-cancel,
+        .opname-btn-save {
+
+            height: 34px;
+
+            padding: 0 15px;
+
+            border-radius: 6px;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .opname-btn-cancel {
+
+            border: 1px solid #dce4ef;
+
+            background: #ffffff;
+
+            color: #61758d;
+        }
+
+        .opname-btn-save {
+
+            border: none;
+
+            background: #185bd1;
+
+            color: #ffffff;
+        }
+
+
+        /* =========================================================
+                           MODAL SINKRONKAN
+                        ========================================================= */
+
+        .sync-modal {
+
+            width: 400px;
+
+            max-width: calc(100% - 40px);
+
+            padding: 28px;
+
+            box-sizing: border-box;
+
+            background: #ffffff;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 50px rgba(15, 39, 70, .20);
+        }
+
+        .sync-modal-icon {
+
+            width: 48px;
+            height: 48px;
+
+            margin: 0 auto 14px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #edf5ff;
+
+            color: #1765d1;
+
+            font-size: 24px;
+
+            font-weight: 600;
+        }
+
+        .sync-modal h3 {
+
+            margin: 0 0 8px;
+
+            color: #173b69;
+
+            font-size: 17px;
+        }
+
+        .sync-modal>p {
+
+            margin: 0 auto;
+
+            max-width: 300px;
+
+            color: #8193a7;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* PERBANDINGAN */
+
+        .sync-comparison {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin: 20px 0;
+        }
+
+        .sync-stock {
+
+            min-width: 105px;
+
+            padding: 12px 10px;
+
+            background: #f7faff;
+
+            border: 1px solid #e1e9f3;
+
+            border-radius: 7px;
+        }
+
+        .sync-stock span {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #8294a9;
+
+            font-size: 9px;
+        }
+
+        .sync-stock strong {
+
+            color: #173b69;
+
+            font-size: 15px;
+        }
+
+        .sync-arrow {
+
+            color: #1765d1;
+
+            font-size: 18px;
+
+            font-weight: 600;
+        }
+
+
+        /* BUTTON */
+
+        .sync-modal-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+        }
+
+        .sync-btn-cancel,
+        .sync-btn-confirm {
+
+            height: 34px;
+
+            min-width: 85px;
+
+            padding: 0 15px;
+
+            border-radius: 6px;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .sync-btn-cancel {
+
+            border: 1px solid #dce4ef;
+
+            background: #ffffff;
+
+            color: #61758d;
+        }
+
+        .sync-btn-confirm {
+
+            border: none;
+
+            background: #185bd1;
+
+            color: #ffffff;
         }
     </style>
 
@@ -624,17 +1141,17 @@
 
                     <button type="button" class="filter-tab active" data-filter="semua">
                         Semua Persediaan
-                        <span>(10)</span>
+                        {{-- <span>(10)</span> --}}
                     </button>
 
                     <button type="button" class="filter-tab" data-filter="selisih">
                         Selisih
-                        <span>(3)</span>
+                        {{-- <span>(3)</span> --}}
                     </button>
 
                     <button type="button" class="filter-tab" data-filter="match">
                         Sesuai
-                        <span>(7)</span>
+                        {{-- <span>(7)</span> --}}
                     </button>
 
                 </div>
@@ -827,11 +1344,11 @@
 
                                 <div class="action-group">
 
-                                    <button class="btn-opname">
+                                    <button type="button" class="btn-opname" onclick="openOpnameModal(this)">
                                         Opname Fisik
                                     </button>
 
-                                    <button class="btn-sync">
+                                    <button type="button" class="btn-sync" onclick="openSyncModal(this)">
                                         Sinkronkan
                                     </button>
 
@@ -905,11 +1422,11 @@
 
                                 <div class="action-group">
 
-                                    <button class="btn-opname">
+                                    <button type="button" class="btn-opname" onclick="openOpnameModal(this)">
                                         Opname Fisik
                                     </button>
 
-                                    <button class="btn-sync">
+                                    <button type="button" class="btn-sync" onclick="openSyncModal(this)">
                                         Sinkronkan
                                     </button>
 
@@ -983,11 +1500,11 @@
 
                                 <div class="action-group">
 
-                                    <button class="btn-opname">
+                                    <button type="button" class="btn-opname" onclick="openOpnameModal(this)">
                                         Opname Fisik
                                     </button>
 
-                                    <button class="btn-sync">
+                                    <button type="button" class="btn-sync" onclick="openSyncModal(this)">
                                         Sinkronkan
                                     </button>
 
@@ -1061,11 +1578,11 @@
 
                                 <div class="action-group">
 
-                                    <button class="btn-opname">
+                                    <button type="button" class="btn-opname" onclick="openOpnameModal(this)">
                                         Opname Fisik
                                     </button>
 
-                                    <button class="btn-sync">
+                                    <button type="button" class="btn-sync" onclick="openSyncModal(this)">
                                         Sinkronkan
                                     </button>
 
@@ -1139,11 +1656,11 @@
 
                                 <div class="action-group">
 
-                                    <button class="btn-opname">
+                                    <button type="button" class="btn-opname" onclick="openOpnameModal(this)">
                                         Opname Fisik
                                     </button>
 
-                                    <button class="btn-sync">
+                                    <button type="button" class="btn-sync" onclick="openSyncModal(this)">
                                         Sinkronkan
                                     </button>
 
@@ -1156,6 +1673,194 @@
                     </tbody>
 
                 </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {{-- =========================================================
+     MODAL OPNAME FISIK
+========================================================= --}}
+    <div class="opname-modal-overlay" id="opnameModal">
+
+        <div class="opname-modal">
+
+            {{-- HEADER --}}
+            <div class="opname-modal-header">
+
+                <div>
+                    <h2>Opname Fisik</h2>
+
+                    <p>
+                        Masukkan jumlah stok aktual hasil pemeriksaan fisik
+                    </p>
+                </div>
+
+                <button type="button" class="opname-modal-close" onclick="closeOpnameModal()">
+                    &times;
+                </button>
+
+            </div>
+
+
+            {{-- BODY --}}
+            <div class="opname-modal-body">
+
+                <div class="opname-info">
+
+                    <div class="opname-info-item">
+
+                        <span>Material</span>
+
+                        <strong id="opnameMaterial">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="opname-info-item">
+
+                        <span>Bin / Lokasi Rak</span>
+
+                        <strong id="opnameLocation">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="opname-info-item">
+
+                        <span>Stok Sistem</span>
+
+                        <strong id="opnameSystemStock">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="opname-form-group">
+
+                    <label for="physicalStock">
+                        Jumlah Stok Fisik
+                    </label>
+
+                    <div class="opname-input-wrapper">
+
+                        <input type="number" id="physicalStock" min="0" placeholder="Masukkan jumlah stok">
+
+                        <span id="opnameUnit">
+                            PCS
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="opname-form-group">
+
+                    <label for="opnameNote">
+                        Catatan Opname
+                    </label>
+
+                    <textarea id="opnameNote" rows="3" placeholder="Contoh: Stok telah diperiksa secara fisik di gudang..."></textarea>
+
+                </div>
+
+            </div>
+
+
+            {{-- FOOTER --}}
+            <div class="opname-modal-footer">
+
+                <button type="button" class="opname-btn-cancel" onclick="closeOpnameModal()">
+                    Batal
+                </button>
+
+                <button type="button" class="opname-btn-save" onclick="savePhysicalStock()">
+                    Simpan Opname
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {{-- =========================================================
+     MODAL SINKRONKAN
+========================================================= --}}
+    <div class="sync-modal-overlay" id="syncModal">
+
+        <div class="sync-modal">
+
+            <div class="sync-modal-icon">
+                ↻
+            </div>
+
+
+            <h3>
+                Sinkronkan Stok?
+            </h3>
+
+
+            <p>
+                Data stok Maximo akan disesuaikan dengan hasil
+                opname fisik yang telah diverifikasi.
+            </p>
+
+
+            <div class="sync-comparison">
+
+                <div class="sync-stock">
+
+                    <span>
+                        Stok Fisik
+                    </span>
+
+                    <strong id="syncPhysicalStock">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="sync-arrow">
+                    →
+                </div>
+
+
+                <div class="sync-stock">
+
+                    <span>
+                        Stok Maximo
+                    </span>
+
+                    <strong id="syncMaximoStock">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="sync-modal-buttons">
+
+                <button type="button" class="sync-btn-cancel" onclick="closeSyncModal()">
+                    Batal
+                </button>
+
+                <button type="button" class="sync-btn-confirm" onclick="confirmSync()">
+                    Sinkronkan
+                </button>
 
             </div>
 
@@ -1212,6 +1917,418 @@
             });
 
         }
+    </script>
+
+    <script>
+        // ============================================
+        // FILTER TAB
+        // ============================================
+        document.querySelectorAll('.filter-tab').forEach(button => {
+            button.addEventListener('click', function() {
+
+                document.querySelectorAll('.filter-tab')
+                    .forEach(btn => btn.classList.remove('active'));
+
+                this.classList.add('active');
+            });
+        });
+
+
+        // ============================================
+        // SEARCH
+        // ============================================
+        const searchInput = document.querySelector('.search-box input');
+
+        if (searchInput) {
+
+            searchInput.addEventListener('input', function() {
+
+                const keyword = this.value.toLowerCase();
+
+                document
+                    .querySelectorAll('.stock-table tbody tr')
+                    .forEach(row => {
+
+                        const text = row.innerText.toLowerCase();
+
+                        row.style.display =
+                            text.includes(keyword) ?
+                            '' :
+                            'none';
+                    });
+            });
+        }
+    </script>
+
+
+    <script>
+        // ============================================
+        // VARIABLE GLOBAL
+        // ============================================
+        let currentOpnameRow = null;
+        let currentSyncRow = null;
+
+
+        // ============================================
+        // OPNAME FISIK
+        // ============================================
+        function openOpnameModal(button) {
+
+            currentOpnameRow = button.closest('tr');
+
+            if (!currentOpnameRow) {
+                return;
+            }
+
+            const cells = currentOpnameRow.querySelectorAll('td');
+
+
+            // ========================================
+            // SESUAIKAN DENGAN STRUKTUR TABEL
+            // ========================================
+            // cells[0] = Item Number
+            // cells[1] = Deskripsi Material
+            // cells[2] = Bin / Lokasi Rak
+            // cells[3] = Stok Fisik
+            // cells[4] = Stok Maximo
+            // cells[5] = Selisih
+            // cells[6] = Nilai Deviasi
+            // cells[7] = Opname Terakhir
+            // cells[8] = Aksi
+
+
+            const material =
+                cells[0]?.textContent.trim() || '-';
+
+            const location =
+                cells[2]?.textContent.trim() || '-';
+
+            const physicalStock =
+                cells[3]?.textContent.trim() || '-';
+
+            const maximoStock =
+                cells[4]?.textContent.trim() || '-';
+
+
+            // ========================================
+            // MASUKKAN DATA KE MODAL
+            // ========================================
+
+            document.getElementById('opnameMaterial').textContent =
+                material;
+
+            document.getElementById('opnameLocation').textContent =
+                location;
+
+            document.getElementById('opnameSystemStock').textContent =
+                maximoStock;
+
+
+            // ========================================
+            // MASUKKAN STOK FISIK SAAT INI
+            // ========================================
+
+            const numberMatch =
+                physicalStock.match(/\d+(?:\.\d+)?/);
+
+            if (numberMatch) {
+
+                document.getElementById('physicalStock').value =
+                    numberMatch[0];
+
+            } else {
+
+                document.getElementById('physicalStock').value = '';
+
+            }
+
+
+            // ========================================
+            // TAMPILKAN MODAL
+            // ========================================
+
+            document.getElementById('opnameModal')
+                .classList.add('show');
+
+            document.body.style.overflow = 'hidden';
+        }
+
+
+
+        // ============================================
+        // TUTUP MODAL OPNAME
+        // ============================================
+        function closeOpnameModal() {
+
+            document.getElementById('opnameModal')
+                .classList.remove('show');
+
+            document.body.style.overflow = '';
+
+            currentOpnameRow = null;
+        }
+
+
+
+        // ============================================
+        // SIMPAN HASIL OPNAME
+        // ============================================
+        function savePhysicalStock() {
+
+            if (!currentOpnameRow) {
+                return;
+            }
+
+            const input =
+                document.getElementById('physicalStock');
+
+            const value = input.value;
+
+
+            // Validasi
+            if (value === '' || Number(value) < 0) {
+
+                alert('Silakan masukkan jumlah stok fisik.');
+
+                return;
+            }
+
+
+            const cells =
+                currentOpnameRow.querySelectorAll('td');
+
+
+            // ========================================
+            // UPDATE KOLOM STOK FISIK
+            // ========================================
+            if (cells[3]) {
+
+                const oldText =
+                    cells[3].textContent.trim();
+
+                const unitMatch =
+                    oldText.match(/[A-Za-z]+/);
+
+                const unit =
+                    unitMatch ?
+                    unitMatch[0] :
+                    'PCS';
+
+
+                cells[3].innerHTML =
+                    `<span class="stock-number">${value}</span>
+                 <span class="stock-unit">${unit}</span>`;
+            }
+
+
+            // ========================================
+            // TUTUP MODAL
+            // ========================================
+            closeOpnameModal();
+        }
+
+
+
+        // ============================================
+        // SINKRONKAN
+        // ============================================
+        function openSyncModal(button) {
+
+            currentSyncRow = button.closest('tr');
+
+            if (!currentSyncRow) {
+                return;
+            }
+
+            const cells =
+                currentSyncRow.querySelectorAll('td');
+
+
+            // ========================================
+            // AMBIL DATA YANG BENAR
+            // ========================================
+
+            const physicalStock =
+                cells[3]?.textContent.trim() || '-';
+
+            const maximoStock =
+                cells[4]?.textContent.trim() || '-';
+
+
+            // ========================================
+            // TAMPILKAN KE MODAL
+            // ========================================
+
+            document.getElementById('syncPhysicalStock')
+                .textContent = physicalStock;
+
+            document.getElementById('syncMaximoStock')
+                .textContent = maximoStock;
+
+
+            // ========================================
+            // TAMPILKAN MODAL
+            // ========================================
+
+            document.getElementById('syncModal')
+                .classList.add('show');
+
+            document.body.style.overflow = 'hidden';
+        }
+
+
+
+        // ============================================
+        // TUTUP MODAL SINKRONKAN
+        // ============================================
+        function closeSyncModal() {
+
+            document.getElementById('syncModal')
+                .classList.remove('show');
+
+            document.body.style.overflow = '';
+
+            currentSyncRow = null;
+        }
+
+
+
+        // ============================================
+        // KONFIRMASI SINKRONKAN
+        // ============================================
+        function confirmSync() {
+
+            if (!currentSyncRow) {
+                return;
+            }
+
+            const cells =
+                currentSyncRow.querySelectorAll('td');
+
+
+            // ========================================
+            // AMBIL STOK FISIK
+            // ========================================
+
+            const physicalText =
+                cells[3]?.textContent.trim() || '0';
+
+            const physicalMatch =
+                physicalText.match(/\d+(?:\.\d+)?/);
+
+            const physicalValue =
+                physicalMatch ?
+                physicalMatch[0] :
+                '0';
+
+
+            // ========================================
+            // AMBIL SATUAN
+            // ========================================
+
+            const unitMatch =
+                physicalText.match(/[A-Za-z]+/);
+
+            const unit =
+                unitMatch ?
+                unitMatch[0] :
+                'PCS';
+
+
+            // ========================================
+            // UBAH STOK MAXIMO
+            // MENJADI SAMA DENGAN STOK FISIK
+            // ========================================
+
+            if (cells[4]) {
+
+                cells[4].innerHTML =
+                    `<span class="stock-number">${physicalValue}</span>
+                 <span class="stock-unit">${unit}</span>`;
+            }
+
+
+            // ========================================
+            // UBAH STATUS MENJADI MATCH
+            // ========================================
+
+            if (cells[5]) {
+
+                cells[5].innerHTML =
+                    `<span class="badge badge-match">
+                    Match
+                 </span>`;
+            }
+
+
+            // ========================================
+            // NILAI DEVIASI MENJADI RP 0
+            // ========================================
+
+            if (cells[6]) {
+
+                cells[6].textContent =
+                    'Rp 0';
+            }
+
+
+            // ========================================
+            // TUTUP MODAL
+            // ========================================
+
+            closeSyncModal();
+        }
+
+
+
+        // ============================================
+        // KLIK AREA LUAR MODAL
+        // ============================================
+
+        const opnameModal =
+            document.getElementById('opnameModal');
+
+        if (opnameModal) {
+
+            opnameModal.addEventListener('click', function(event) {
+
+                if (event.target === this) {
+
+                    closeOpnameModal();
+                }
+            });
+        }
+
+
+        const syncModal =
+            document.getElementById('syncModal');
+
+        if (syncModal) {
+
+            syncModal.addEventListener('click', function(event) {
+
+                if (event.target === this) {
+
+                    closeSyncModal();
+                }
+            });
+        }
+
+
+
+        // ============================================
+        // ESC
+        // ============================================
+
+        document.addEventListener('keydown', function(event) {
+
+            if (event.key === 'Escape') {
+
+                closeOpnameModal();
+
+                closeSyncModal();
+            }
+        });
     </script>
 
 @endsection

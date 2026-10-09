@@ -4,15 +4,14 @@
 
 @section('page-title', 'Riwayat Transaksi')
 
-@section('page-subtitle', 'Pencatatan real-time penerimaan PO, pengeluaran WO, dan transfer terintegrasi IBM Maximo')
-
+@section('page-subtitle', 'PLN Nusantara Power Services')
 @section('content')
 
     <style>
         /* =========================================================
-               RIWAYAT TRANSAKSI ADMIN
-               Warna utama: putih + biru
-            ========================================================= */
+                                           RIWAYAT TRANSAKSI ADMIN
+                                           Warna utama: putih + biru
+                                        ========================================================= */
 
         .transaction-page {
             width: 100%;
@@ -21,8 +20,8 @@
         }
 
         /* =========================
-               HEADER
-            ========================= */
+                                           HEADER
+                                        ========================= */
 
         .transaction-header {
             display: flex;
@@ -75,28 +74,28 @@
             background: #078bc2;
         }
 
-        .btn-new-transaction {
-            border: none;
-            border-radius: 7px;
-            padding: 9px 13px;
-            background: #1559d6;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: .2s ease;
-        }
+        /* .btn-new-transaction {
+                                    border: none;
+                                    border-radius: 7px;
+                                    padding: 9px 13px;
+                                    background: #1559d6;
+                                    color: #fff;
+                                    font-size: 11px;
+                                    font-weight: 600;
+                                    cursor: pointer;
+                                    display: inline-flex;
+                                    align-items: center;
+                                    gap: 6px;
+                                    transition: .2s ease;
+                                }
 
-        .btn-new-transaction:hover {
-            background: #104dbb;
-        }
+                                .btn-new-transaction:hover {
+                                    background: #104dbb;
+                                } */
 
         /* =========================
-               FILTER / TAB AREA
-            ========================= */
+                                           FILTER / TAB AREA
+                                        ========================= */
 
         .transaction-filter {
             background: #ffffff;
@@ -167,41 +166,63 @@
         }
 
         .transaction-search {
+            height: 37px;
+
+            flex: 1;
+
+            min-width: 200px;
+
             position: relative;
-            width: 220px;
+        }
+
+        .transaction-search svg {
+            position: absolute;
+
+            width: 17px;
+            height: 17px;
+
+            left: 13px;
+            top: 10px;
+
+            color: #6e7d96;
         }
 
         .transaction-search input {
             width: 100%;
-            height: 35px;
-            border: 1px solid #d9e3ef;
-            background: #f7faff;
+            height: 100%;
+
+            padding: 0 12px 0 39px;
+
+            border: 1px solid #dfe5ec;
             border-radius: 7px;
+
             outline: none;
-            padding: 0 11px 0 32px;
-            color: #17345f;
-            font-size: 10px;
-            box-sizing: border-box;
+
+            background: #f8fafc;
+
+            color: #95a1b2;
+
+            font-family: inherit;
+            font-size: 11px;
         }
 
         .transaction-search input::placeholder {
-            color: #91a0b4;
+            color: #738099;
         }
 
         .transaction-search input:focus {
-            border-color: #3c8edc;
-            background: #fff;
+            border-color: #2873d8;
         }
 
-        .transaction-search-icon {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #7890a9;
-            font-size: 13px;
-            pointer-events: none;
-        }
+        /* .transaction-search-icon {
+                        position: absolute;
+                        left: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: #7890a9;
+                        font-size: 13px;
+                        pointer-events: none;
+                    } */
 
         .transaction-status {
             height: 35px;
@@ -217,8 +238,8 @@
         }
 
         /* =========================
-               TABLE
-            ========================= */
+                                           TABLE
+                                        ========================= */
 
         .transaction-table-card {
             background: #ffffff;
@@ -306,8 +327,8 @@
         }
 
         /* =========================
-               TRANSACTION NUMBER
-            ========================= */
+                                           TRANSACTION NUMBER
+                                        ========================= */
 
         .transaction-number {
             color: #203c64;
@@ -323,8 +344,8 @@
         }
 
         /* =========================
-               TYPE BADGE
-            ========================= */
+                                           TYPE BADGE
+                                        ========================= */
 
         .transaction-type {
             display: inline-flex;
@@ -353,8 +374,8 @@
         }
 
         /* =========================
-               REF
-            ========================= */
+                                           REF
+                                        ========================= */
 
         .transaction-ref {
             color: #1572ce;
@@ -364,8 +385,8 @@
         }
 
         /* =========================
-               ITEM
-            ========================= */
+                                           ITEM
+                                        ========================= */
 
         .item-name {
             color: #344e6f;
@@ -380,8 +401,8 @@
         }
 
         /* =========================
-               LOCATION
-            ========================= */
+                                           LOCATION
+                                        ========================= */
 
         .location-main {
             color: #4b6078;
@@ -396,8 +417,8 @@
         }
 
         /* =========================
-               RECIPIENT
-            ========================= */
+                                           RECIPIENT
+                                        ========================= */
 
         .recipient-name {
             color: #40566f;
@@ -412,8 +433,8 @@
         }
 
         /* =========================
-               STATUS
-            ========================= */
+                                           STATUS
+                                        ========================= */
 
         .sync-status {
             display: inline-flex;
@@ -436,8 +457,8 @@
         }
 
         /* =========================
-               ACTION
-            ========================= */
+                                           ACTION
+                                        ========================= */
 
         .transaction-action {
             display: flex;
@@ -460,8 +481,8 @@
         }
 
         /* =========================
-               EMPTY STATE
-            ========================= */
+                                           EMPTY STATE
+                                        ========================= */
 
         .transaction-empty {
             text-align: center;
@@ -471,8 +492,8 @@
         }
 
         /* =========================================================
-               RESPONSIVE
-            ========================================================= */
+                                           RESPONSIVE
+                                        ========================================================= */
 
         @media (max-width: 1200px) {
 
@@ -507,7 +528,8 @@
             }
 
             .btn-scan,
-            .btn-new-transaction {
+            /* .btn-new-transaction */
+                {
                 flex: 1;
                 justify-content: center;
             }
@@ -565,7 +587,8 @@
             }
 
             .btn-scan,
-            .btn-new-transaction {
+            /* .btn-new-transaction  */
+                {
                 font-size: 9px;
                 padding: 9px 8px;
             }
@@ -589,8 +612,8 @@
     <div class="transaction-page">
 
         <!-- =========================================
-                 HEADER
-            ========================================== -->
+                                             HEADER
+                                        ========================================== -->
 
         <div class="transaction-header">
 
@@ -608,14 +631,16 @@
             <div class="transaction-header-actions">
 
                 <button type="button" class="btn-scan">
-                    <span>▦</span>
+                    <span>
+                        <img src="{{ asset('assets/images/scan-barcode.png') }}" alt="Scan Barcode">
+                    </span>
                     Scan Barcode Transaksi
                 </button>
 
-                <button type="button" class="btn-new-transaction">
+                {{-- <button type="button" class="btn-new-transaction">
                     <span>＋</span>
                     Buat Transaksi Baru
-                </button>
+                </button> --}}
 
             </div>
 
@@ -623,8 +648,8 @@
 
 
         <!-- =========================================
-                 FILTER
-            ========================================== -->
+                                             FILTER
+                                        ========================================== -->
 
         <div class="transaction-filter">
 
@@ -635,11 +660,11 @@
                 </button>
 
                 <button type="button" class="transaction-tab receipt">
-                    ↙ &nbsp; Penerimaan PO (Goods Receipt)
+                    ↙ &nbsp; Penerimaan PO
                 </button>
 
                 <button type="button" class="transaction-tab issue">
-                    ↗ &nbsp; Pengeluaran WO (Goods Issue)
+                    ↗ &nbsp; Pengeluaran WO
                 </button>
 
                 <button type="button" class="transaction-tab mutation">
@@ -652,10 +677,10 @@
             <div class="transaction-filter-right">
 
                 <div class="transaction-search">
-
-                    <span class="transaction-search-icon">
-                        🔍
-                    </span>
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="M20 20l-4-4" />
+                    </svg>
 
                     <input type="text" id="transactionSearch" placeholder="Cari No TRX, PO/WO, Item...">
 
@@ -683,8 +708,8 @@
 
 
         <!-- =========================================
-                 TABLE
-            ========================================== -->
+                                             TABLE
+                                        ========================================== -->
 
         <div class="transaction-table-card">
 
@@ -741,8 +766,8 @@
                     <tbody id="transactionTableBody">
 
                         <!-- =====================================
-                                 DATA 1
-                            ====================================== -->
+                                                             DATA 1
+                                                        ====================================== -->
 
                         <tr>
 
@@ -843,8 +868,8 @@
 
 
                         <!-- =====================================
-                                 DATA 2
-                            ====================================== -->
+                                                             DATA 2
+                                                        ====================================== -->
 
                         <tr>
 
@@ -949,8 +974,8 @@
 
 
                         <!-- =====================================
-                                 DATA 3
-                            ====================================== -->
+                                                             DATA 3
+                                                        ====================================== -->
 
                         <tr>
 
@@ -1066,8 +1091,8 @@
 
     <script>
         /* =========================================
-               SEARCH TRANSAKSI
-            ========================================== */
+                                           SEARCH TRANSAKSI
+                                        ========================================== */
 
         document.addEventListener('DOMContentLoaded', function() {
 

@@ -211,3 +211,42 @@ Route::get('/appAdmin', function () {
 Route::get('/appEmployee', function () {
     return view('layouts.app');
 })->name('appEmployee');
+
+// COBA
+Route::get('/verifyLocation', function () {
+    return view('auth.verify-location');
+})->name('verifyLocation');
+
+Route::get('/dashboardEmployee', function () {
+    return view('employee.dashboard-employee');
+})->name('dashboardEmployee');
+
+
+// ROUTE ICON EDIT HALAMAN KATALOGADMIN
+Route::get('/katalogAdmin/edit/{itemNumber}', function ($itemNumber) {
+
+    $items = [
+
+        'CF-077421' => [
+            'item_number' => 'CF-077421',
+            'kategori' => 'Consumable & Fastener',
+            'deskripsi' => 'Spiral Wound Gasket 4 Inch 300# ANSI B16.20 SS316 Graphite',
+            'spesifikasi' => 'Inner Ring SS316, Centering Ring Carbon Steel, 150-300 LB',
+            'lokasi' => 'RAK D-4.01',
+            'satuan' => 'PCS',
+            'unit' => '',
+            'stok_fisik' => 18,
+            'stok_maximo' => 18,
+            'rop' => 10,
+            'harga' => 320000,
+        ],
+    ];
+     if (!isset($items[$itemNumber])) {
+        abort(404);
+    }
+
+    return view('admin.edit-katalog', [
+        'item' => $items[$itemNumber]
+    ]);
+
+})->name('katalogAdmin.edit');

@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-    // /**
-    //  * Menampilkan halaman verifikasi lokasi
-    //  */
+    /**
+     * Menampilkan halaman verifikasi lokasi
+     */
     public function show()
     {
-        // Kalau belum login, kembali ke login
         if (!session()->has('user')) {
             return redirect()->route('login');
         }
@@ -21,9 +20,10 @@ class LocationController extends Controller
         return view('auth.verify-location', compact('user'));
     }
 
-    // /**
-    //  * Memproses hasil verifikasi lokasi
-    //  */
+
+    /**
+     * Memproses lokasi pengguna
+     */
     public function verify(Request $request)
     {
         $request->validate([
@@ -31,17 +31,31 @@ class LocationController extends Controller
             'longitude' => 'required|numeric',
         ]);
 
+
         /*
         |--------------------------------------------------------------------------
-        | LOKASI KANTOR SEMENTARA
+        | KOORDINAT KANTOR / UNIT
+        |--------------------------------------------------------------------------
+        |
+        | NANTI KAMU MASUKKAN KOORDINAT KANTOR DI SINI
+        |
+        */
+
+        $officeLatitude = -7.31573732585965;
+        $officeLongitude = 112.72989641384704;
+
+        $officeLatitude = -7.376830912097001; 
+        $officeLongitude = 112.738121641038;
+        
+        /*
+        |--------------------------------------------------------------------------
+        | KOORDINAT PENGGUNA
         |--------------------------------------------------------------------------
         */
 
-        $officeLatitude = -7.2575;
-        $officeLongitude = 112.7521;
+        $userLatitude = (float) $request->latitude;
+        $userLongitude = (float) $request->longitude;
 
-        $userLatitude = $request->latitude;
-        $userLongitude = $request->longitude;
 
         /*
         |--------------------------------------------------------------------------
@@ -63,11 +77,10 @@ class LocationController extends Controller
         );
 
         $a =
-            sin($deltaLat / 2) * sin($deltaLat / 2) +
+            sin($deltaLat / 2) ** 2 +
             cos($lat1) *
             cos($lat2) *
-            sin($deltaLon / 2) *
-            sin($deltaLon / 2);
+            sin($deltaLon / 2) ** 2;
 
         $c = 2 * atan2(
             sqrt($a),
@@ -76,21 +89,32 @@ class LocationController extends Controller
 
         $distance = $earthRadius * $c;
 
+
         /*
         |--------------------------------------------------------------------------
-        | RADIUS MAKSIMAL
+        | RADIUS YANG DIIZINKAN
         |--------------------------------------------------------------------------
         */
 
         $allowedRadius = 500;
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | LOKASI DI LUAR AREA
+        |--------------------------------------------------------------------------
+        */
+
         if ($distance > $allowedRadius) {
 
             return back()->with(
                 'location_error',
-                'Lokasi Anda berada di luar area kantor. Silakan berada di area kantor untuk melanjutkan.'
+                'Akses lokasi ditolak. Anda berada di luar area unit. Jarak Anda sekitar ' .
+                round($distance) .
+                ' meter dari lokasi unit.'
             );
         }
+
 
         /*
         |--------------------------------------------------------------------------
@@ -104,6 +128,13 @@ class LocationController extends Controller
             'longitude' => $userLongitude,
             'location_distance' => round($distance),
         ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | MASUK DASHBOARD
+        |--------------------------------------------------------------------------
+        */
 
         return redirect()->route('dashboardEmployee');
     }
