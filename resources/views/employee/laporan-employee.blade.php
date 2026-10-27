@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Laporan Ex Barang')
+@section('title', 'Laporan Ex Used')
 
-@section('page-title', 'Laporan Ex Barang')
+@section('page-title', 'Laporan Ex Used')
 
 @section('page-subtitle', 'PLN Nusantara Power Services')
 
@@ -17,7 +17,7 @@
 
             {{-- JUDUL --}}
             <div class="header-title">
-                <h2>{{ __('Laporan Ex Barang') }}</h2>
+                <h2>{{ __('Laporan Ex Used') }}</h2>
 
                 <p>
                     {{ __('Lihat dan ekspor laporan pengembalian barang berdasarkan periode.') }}
@@ -448,12 +448,12 @@
         }
 
         /* ================================
-                                                                           HEADER
-                                                                        ================================= */
+                                                                                   HEADER
+                                                                                ================================= */
 
         /* ================================
-                                                           HEADER
-                                                        ================================= */
+                                                                   HEADER
+                                                                ================================= */
 
         .laporan-header {
             background: #ffffff;
@@ -468,8 +468,8 @@
 
 
         /* ================================
-                                                           JUDUL
-                                                        ================================= */
+                                                                   JUDUL
+                                                                ================================= */
 
         .header-title h2 {
             margin: 0;
@@ -489,8 +489,8 @@
 
 
         /* ================================
-                                                           BARIS FILTER
-                                                        ================================= */
+                                                                   BARIS FILTER
+                                                                ================================= */
 
         .filter-row {
             width: 100%;
@@ -504,8 +504,8 @@
 
 
         /* ================================
-                                                           TAB FILTER
-                                                        ================================= */
+                                                                   TAB FILTER
+                                                                ================================= */
 
         .filter-tabs {
             display: flex;
@@ -554,8 +554,8 @@
 
 
         /* ================================
-                                                           FILTER KANAN
-                                                        ================================= */
+                                                                   FILTER KANAN
+                                                                ================================= */
 
         .filter-right {
             margin-left: auto;
@@ -569,8 +569,8 @@
 
 
         /* ================================
-                                                           PERIODE FILTER
-                                                        ================================= */
+                                                                   PERIODE FILTER
+                                                                ================================= */
 
         .periode-filter {
             display: flex;
@@ -599,8 +599,8 @@
 
 
         /* ================================
-                                                           SELECT
-                                                        ================================= */
+                                                                   SELECT
+                                                                ================================= */
 
         .form-control {
             width: 150px;
@@ -634,8 +634,8 @@
 
 
         /* ================================
-                                                           TOMBOL TAMPILKAN
-                                                        ================================= */
+                                                                   TOMBOL TAMPILKAN
+                                                                ================================= */
 
         .btn-tampilkan {
             height: 42px;
@@ -924,12 +924,12 @@
 
 
         /* ================================
-                                                           RESPONSIVE HEADER
-                                                        ================================= */
+                                                                   RESPONSIVE HEADER
+                                                                ================================= */
 
         /* ================================
-                           TABLET / LAPTOP KECIL
-                        ================================= */
+                                   TABLET / LAPTOP KECIL
+                                ================================= */
         @media (max-width: 1100px) {
 
             .laporan-container {
@@ -980,8 +980,8 @@
 
 
         /* ================================
-                           TABLET
-                        ================================= */
+                                   TABLET
+                                ================================= */
         @media (max-width: 850px) {
 
             .laporan-container {
@@ -1049,8 +1049,8 @@
 
 
         /* ================================
-                           MOBILE
-                        ================================= */
+                                   MOBILE
+                                ================================= */
         @media (max-width: 768px) {
 
             .laporan-container {
@@ -1211,8 +1211,8 @@
 
 
         /* ================================
-                           MOBILE KECIL
-                        ================================= */
+                                   MOBILE KECIL
+                                ================================= */
         @media (max-width: 560px) {
 
             .laporan-container {
@@ -1308,8 +1308,8 @@
 
 
         /* ================================
-                           HP SANGAT KECIL
-                        ================================= */
+                                   HP SANGAT KECIL
+                                ================================= */
         @media (max-width: 400px) {
 
             .laporan-container {

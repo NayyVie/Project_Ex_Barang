@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login - Ex Barang Management System</title>
+    <title>Login - Ex Used Management System</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1153,12 +1153,12 @@
                 <div class="hero-content">
 
                     <div class="system-badge">
-                        Ex Barang Management System
+                        Ex Used Management System
                     </div>
 
 
                     <h1>
-                        Kelola Aset Ex Barang
+                        Kelola Aset Ex Used
                         <span>PLN</span> dengan Mudah
                     </h1>
 
@@ -1179,7 +1179,7 @@
                                 <h3>Pelaporan Digital</h3>
 
                                 <p>
-                                    Input dan kelola laporan ex barang secara real-time
+                                    Input dan kelola laporan ex used secara real-time
                                 </p>
 
                             </div>
@@ -1251,7 +1251,7 @@
                 </h1>
 
                 <p class="login-subtitle">
-                    Masuk ke sistem manajemen ex barang PLN Nusantara Power Services
+                    Masuk ke sistem manajemen ex used PLN Nusantara Power Services
                 </p>
 
 

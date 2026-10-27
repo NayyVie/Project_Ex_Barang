@@ -72,11 +72,11 @@ Route::get('/resendOtp', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/verify-location', [LocationController::class, 'show'])
-    ->name('verifyLocation');
+// Route::get('/verify-location', [LocationController::class, 'show'])
+//     ->name('verifyLocation');
 
-Route::post('/verify-location', [LocationController::class, 'verify'])
-    ->name('verifyLocation.process');
+// Route::post('/verify-location', [LocationController::class, 'verify'])
+//     ->name('verifyLocation.process');
 
 
 /*
@@ -85,18 +85,22 @@ Route::post('/verify-location', [LocationController::class, 'verify'])
 |--------------------------------------------------------------------------
 */
 
+// Route::get('/dashboardEmployee', function () {
+
+//     if (!session()->has('user')) {
+//         return redirect()->route('login');
+//     }
+
+//     if (!session('location_verified')) {
+//         return redirect()->route('verifyLocation');
+//     }
+
+//     return view('employee.dashboard-employee');
+
+// })->name('dashboardEmployee');
+
 Route::get('/dashboardEmployee', function () {
-
-    if (!session()->has('user')) {
-        return redirect()->route('login');
-    }
-
-    if (!session('location_verified')) {
-        return redirect()->route('verifyLocation');
-    }
-
     return view('employee.dashboard-employee');
-
 })->name('dashboardEmployee');
 
 Route::get('/riwayatEmployee', function () {
@@ -213,13 +217,13 @@ Route::get('/appEmployee', function () {
 })->name('appEmployee');
 
 // COBA
-Route::get('/verifyLocation', function () {
-    return view('auth.verify-location');
-})->name('verifyLocation');
+// Route::get('/verifyLocation', function () {
+//     return view('auth.verify-location');
+// })->name('verifyLocation');
 
-Route::get('/dashboardEmployee', function () {
-    return view('employee.dashboard-employee');
-})->name('dashboardEmployee');
+// Route::get('/dashboardEmployee', function () {
+//     return view('employee.dashboard-employee');
+// })->name('dashboardEmployee');
 
 
 // ROUTE ICON EDIT HALAMAN KATALOGADMIN
@@ -250,3 +254,118 @@ Route::get('/katalogAdmin/edit/{itemNumber}', function ($itemNumber) {
     ]);
 
 })->name('katalogAdmin.edit');
+
+// Contoh pola pembatasan akses.
+// Sesuaikan URL dan nama route dengan route yang sudah ada.
+
+Route::middleware(['auth', 'role:worker'])->group(function () {
+    // Route khusus Worker
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    // Route khusus Admin Gudang
+});
+
+
+// ROUTE WORKER AFTER DATABASE
+
+// Route::get('/dashboardEmployee', function () {
+//     if (!session()->has('user')) {
+//         return redirect()->route('login');
+//     }
+
+//     if (!session('location_verified')) {
+//         return redirect()->route('verifyLocation');
+//     }
+
+//     return view('employee.dashboard-employee');
+// })->middleware('role:worker')->name('dashboardEmployee');
+
+// Route::get('/riwayatEmployee', fn() =>
+//     view('employee.riwayat-employee')
+// )->middleware('role:worker')->name('riwayatEmployee');
+
+// Route::get('/laporanEmployee', fn() =>
+//     view('employee.laporan-employee')
+// )->middleware('role:worker')->name('laporanEmployee');
+
+// Route::get('/notifikasiEmployee', fn() =>
+//     view('employee.notifikasi-employee')
+// )->middleware('role:worker')->name('notifikasiEmployee');
+
+// Route::get('/profileEmployee', fn() =>
+//     view('employee.profile-employee')
+// )->middleware('role:worker')->name('profileEmployee');
+
+// Route::get('/inputExBarang', fn() =>
+//     view('employee.input-barang')
+// )->middleware('role:worker')->name('inputExBarang');
+
+// Route::get('/inputExBarang/step-2', fn() =>
+//     view('employee.input-step2')
+// )->middleware('role:worker')->name('inputExBarang.step2');
+
+// Route::get('/inputExBarang/step-3', fn() =>
+//     view('employee.input-step3')
+// )->middleware('role:worker')->name('inputExBarang.step3');
+
+
+// ROUTE ADMIN AFTER DATABASE
+
+// Route::get('/dashboardAdmin', fn() =>
+//     view('admin.dashboard-admin')
+// )->middleware('role:admin')->name('dashboardAdmin');
+
+// Route::get('/profileAdmin', fn() =>
+//     view('admin.profile-admin')
+// )->middleware('role:admin')->name('profileAdmin');
+
+// Route::get('/katalogAdmin', fn() =>
+//     view('admin.katalog-admin')
+// )->middleware('role:admin')->name('katalogAdmin');
+
+// Route::get('/StockAdmin', fn() =>
+//     view('admin.opname')
+// )->middleware('role:admin')->name('StockAdmin');
+
+// Route::get('/inputAdmin', fn() =>
+//     view('admin.inputBarang-admin')
+// )->middleware('role:admin')->name('inputAdmin');
+
+// Route::get('/inputAdmin.Step2', fn() =>
+//     view('admin.input2-admin')
+// )->middleware('role:admin')->name('inputAdmin.Step2');
+
+// Route::get('/inputAdminStep3', fn() =>
+//     view('admin.input3-admin')
+// )->middleware('role:admin')->name('inputAdmin.Step3');
+
+// Route::get('/penerimaanBarang', fn() =>
+//     view('admin.po-admin')
+// )->middleware('role:admin')->name('penerimaanBarang');
+
+// Route::get('/pengeluaranBarang', fn() =>
+//     view('admin.wo-admin')
+// )->middleware('role:admin')->name('pengeluaranBarang');
+
+// Route::get('/mutasiGudang', fn() =>
+//     view('admin.mutasi-admin')
+// )->middleware('role:admin')->name('mutasiGudang');
+
+// Route::get('/riwayatTransaksi', fn() =>
+//     view('admin.riwayatTransaksi-admin')
+// )->middleware('role:admin')->name('riwayatTransaksi');
+
+// Route::get('/materialBekas', fn() =>
+//     view('admin.materialBekas-admin')
+// )->middleware('role:admin')->name('materialBekas');
+
+// Route::get('/scanBarcode', fn() =>
+//     view('admin.scanBarcode-admin')
+// )->middleware('role:admin')->name('scanBarcode');
+
+// Route::get('/laporanAdmin', fn() =>
+//     view('admin.laporan-admin')
+// )->middleware('role:admin')->name('laporanAdmin');
+
+

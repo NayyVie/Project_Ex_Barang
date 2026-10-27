@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Verifikasi OTP - Ex Barang System</title>
+    <title>Verifikasi OTP - Ex Used System</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -421,14 +421,13 @@
 
             <div class="forgot-system">
                 <span class="forgot-system-dot"></span>
-                Ex Barang Management System
+                Ex Used Management System
             </div>
 
             <div class="forgot-title">
                 <h1>
-                    Kelola Aset Ex Barang
+                    Kelola Aset Ex Used
                     <span>PLN</span><br>
-                    dengan Mudah
                 </h1>
             </div>
 

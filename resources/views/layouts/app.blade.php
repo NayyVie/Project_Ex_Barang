@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>@yield('title', 'Ex Barang System')</title>
+    <title>@yield('title', 'Ex Used System')</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1254,7 +1254,7 @@
                 </div>
 
                 <div class="system-name">
-                    Ex Barang System
+                    Ex Used System
                 </div>
 
             </div>
@@ -1283,7 +1283,7 @@
                         <img src="{{ asset('assets/images/icon-input.png') }}" alt="Input">
                     </span>
 
-                    <span>Input Ex Barang</span>
+                    <span>Input Ex Used</span>
 
                 </a>
 

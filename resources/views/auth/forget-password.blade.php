@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lupa Password - Ex Barang System</title>
+    <title>Lupa Password - Ex Used System</title>
 
     {{-- Google Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -602,13 +602,12 @@
             <div class="left-content">
 
                 <div class="system-badge">
-                    Ex Barang Management System
+                    Ex Used Management System
                 </div>
 
                 <h1>
-                    Kelola Aset Ex Barang
+                    Kelola Aset Ex Used
                     <span>PLN</span>
-                    dengan Mudah
                 </h1>
 
                 <h2>
@@ -617,7 +616,7 @@
 
                 <p>
                     Jangan khawatir. Kami akan membantu Anda
-                    mendapatkan kembali akses ke akun Ex Barang System
+                    mendapatkan kembali akses ke akun Ex Used System
                     dengan mengirimkan kode OTP.
                 </p>
 

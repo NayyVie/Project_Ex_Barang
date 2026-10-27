@@ -25,7 +25,7 @@
                     <h2>{{ __('Notifikasi') }}</h2>
 
                     <p>
-                        Informasi dan pemberitahuan terkait laporan ex barang.
+                        Informasi dan pemberitahuan terkait laporan ex used.
                     </p>
                 </div>
 
@@ -84,7 +84,7 @@
                     </div>
 
                     <p>
-                        Laporan ex barang dengan ID
+                        Laporan ex used dengan ID
                         <strong>RPT-2026-004</strong>
                         berhasil dibuat dan menunggu proses approval manager.
                     </p>
@@ -221,8 +221,8 @@
     ================================= --}}
     <style>
         /* ================================
-                       CONTAINER
-                    ================================= */
+                               CONTAINER
+                            ================================= */
 
         .notifikasi-container {
             padding: 22px 38px 50px;
@@ -232,8 +232,8 @@
 
 
         /* ================================
-                       HEADER
-                    ================================= */
+                               HEADER
+                            ================================= */
 
         .notification-header {
             background: #ffffff;
@@ -300,8 +300,8 @@
 
 
         /* ================================
-                       BUTTON TANDAI SEMUA
-                    ================================= */
+                               BUTTON TANDAI SEMUA
+                            ================================= */
 
         .btn-read-all {
             height: 39px;
@@ -337,8 +337,8 @@
 
 
         /* ================================
-                       FILTER
-                    ================================= */
+                               FILTER
+                            ================================= */
 
         .notification-filter {
             background: #ffffff;
@@ -436,8 +436,8 @@
 
 
         /* ================================
-                       NOTIFICATION CARD
-                    ================================= */
+                               NOTIFICATION CARD
+                            ================================= */
 
         .notification-card {
             background: #ffffff;
@@ -454,8 +454,8 @@
 
 
         /* ================================
-                       ITEM
-                    ================================= */
+                               ITEM
+                            ================================= */
 
         .notification-item {
             display: flex;
@@ -488,8 +488,8 @@
 
 
         /* ================================
-                       ICON
-                    ================================= */
+                               ICON
+                            ================================= */
 
         .notification-item-icon {
             width: 43px;
@@ -533,8 +533,8 @@
 
 
         /* ================================
-                       CONTENT
-                    ================================= */
+                               CONTENT
+                            ================================= */
 
         .notification-content {
             flex: 1;
@@ -588,8 +588,8 @@
 
 
         /* ================================
-                       UNREAD DOT
-                    ================================= */
+                               UNREAD DOT
+                            ================================= */
 
         .unread-dot {
             width: 7px;
@@ -604,8 +604,8 @@
 
 
         /* ================================
-                       EMPTY STATE
-                    ================================= */
+                               EMPTY STATE
+                            ================================= */
 
         .notification-empty {
             background: #ffffff;
@@ -660,8 +660,8 @@
 
 
         /* ================================
-                       RESPONSIVE
-                    ================================= */
+                               RESPONSIVE
+                            ================================= */
 
         @media (max-width: 768px) {
 

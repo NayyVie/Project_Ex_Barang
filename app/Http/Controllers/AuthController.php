@@ -3,64 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    /**
-     * Menampilkan halaman login
-     */
     public function showLogin()
     {
         return view('auth.login');
     }
 
-    /**
-     * Proses login
-     */
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        // LOGIN SEMENTARA
-        if (
-            $request->email === 'abc@gmail.com' &&
-            $request->password === '123456'
-        ) {
+        // Memeriksa email dan password melalui database
+        if (Auth::attempt(
+            $credentials,
+            $request->boolean('remember')
+        )) {
+            $request->session()->regenerate();
 
-            $user = [
-                'employee_id' => 'EMP001',
-                'name' => 'Budi Santoso',
-                'email' => 'abc@gmail.com',
-                'unit' => 'PLN Unit Surabaya',
-                'role' => 'Pekerja',
-            ];
+            $user = Auth::user();
 
-            // Simpan data user
+            // Menyimpan informasi pengguna ke session
             session([
-                'user' => $user,
+                'user' => [
+                    'employee_id' => $user->employee_id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'unit' => $user->unit,
+                    'role' => $user->role,
+                ],
                 'location_verified' => false,
             ]);
 
-            // Setelah login → verifikasi lokasi
+            // Login berhasil, lanjut ke verifikasi lokasi
             return redirect()->route('verifyLocation');
         }
 
-        // Login gagal
         return back()
             ->withErrors([
                 'email' => 'Email atau password salah.',
             ])
-            ->withInput();
+            ->onlyInput('email');
     }
 
-    /**
-     * Logout
-     */
     public function logout(Request $request)
     {
+        Auth::logout();
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

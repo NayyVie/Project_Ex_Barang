@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard - Ex Barang System</title>
+    <title>Dashboard - Ex Used System</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -2466,7 +2466,7 @@
 
                 <div class="system-name">
 
-                    Ex Barang System
+                    Ex Used System
 
                 </div>
 
@@ -2500,7 +2500,7 @@
 
                     </span>
 
-                    <span>{{ __('Input Ex Barang') }}</span>
+                    <span>{{ __('Input Ex Used') }}</span>
 
                 </a>
 
@@ -2838,7 +2838,7 @@
 
                         <div class="stat-name">
 
-                            {{ __('Total Ex Barang') }}
+                            {{ __('Total Ex Used') }}
 
                         </div>
 
@@ -2942,7 +2942,7 @@
                         </div>
 
                         <div class="quick-text">
-                            <h3>{{ __('Input Ex Barang') }}</h3>
+                            <h3>{{ __('Input Ex Used') }}</h3>
                             <p>{{ __('Buat Laporan Baru') }}</p>
                         </div>
 

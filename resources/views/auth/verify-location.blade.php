@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Verifikasi Lokasi - Ex Barang System</title>
+    <title>Verifikasi Lokasi - Ex Used System</title>
 
     <style>
         * {
@@ -752,7 +752,7 @@
             <div class="user-info">
 
                 <div class="system-label">
-                    Ex Barang Management System
+                    Ex Used Management System
                 </div>
 
                 <h3>

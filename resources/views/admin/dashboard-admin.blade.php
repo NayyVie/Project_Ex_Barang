@@ -2227,7 +2227,7 @@
                         <img src="{{ asset('assets/images/icon-catalog.png') }}" alt="Catalog Icon">
                     </span>
 
-                    <span>Katalog Ex Barang</span>
+                    <span>Katalog Ex Used</span>
 
                 </a>
 
@@ -2540,7 +2540,7 @@
                         <div class="warning-text">
 
                             <h3>
-                                Perhatian: Ditemukan 3 Item Ex Barang Berselisih
+                                Perhatian: Ditemukan 3 Item Ex Used Berselisih
                             </h3>
 
                             <p>
@@ -2635,7 +2635,7 @@
 
 
                         <a href="#" class="stat-link">
-                            Lihat Katalog Ex Barang →
+                            Lihat Katalog Ex Used →
                         </a>
 
                     </div>
@@ -3012,7 +3012,7 @@
                                     </h3>
 
                                     <p>
-                                        Distribusi material ex barang berdasarkan
+                                        Distribusi material ex used berdasarkan
                                         kategori
                                     </p>
 

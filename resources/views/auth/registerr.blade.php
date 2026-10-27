@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Registrasi - Ex Barang System</title>
+    <title>Registrasi - Ex Used System</title>
 
     {{-- Google Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1043,13 +1043,12 @@
                 <div class="hero-content">
 
                     <div class="system-badge">
-                        Ex Barang Management System
+                        Ex Used Management System
                     </div>
 
                     <h1>
-                        Kelola Aset Ex Barang
+                        Kelola Aset Ex Used
                         <span>PLN</span>
-                        dengan Mudah
                     </h1>
 
                     <h2>
@@ -1057,7 +1056,7 @@
                     </h2>
 
                     <p>
-                        Daftarkan akun Anda untuk menggunakan Ex Barang System
+                        Daftarkan akun Anda untuk menggunakan Ex Used System
                         dan melakukan pengelolaan laporan pengembalian barang.
                     </p>
 
@@ -1083,7 +1082,7 @@
                 </h1>
 
                 <p class="register-subtitle">
-                    Daftarkan akun Anda untuk menggunakan Ex Barang System
+                    Daftarkan akun Anda untuk menggunakan Ex Used System
                 </p>
 
                 {{-- FORM --}}

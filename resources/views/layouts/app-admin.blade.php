@@ -1131,7 +1131,7 @@
                         <img src="{{ asset('assets/images/icon-catalog.png') }}" alt="Catalog Icon">
                     </span>
 
-                    <span>Katalog Ex Barang</span>
+                    <span>Katalog Ex Used</span>
 
                 </a>
 
@@ -1156,7 +1156,7 @@
                             style="width: 20px; height: 20px;">
                     </span>
 
-                    <span>Input Ex Barang</span>
+                    <span>Input Ex Used</span>
 
                 </a>
 
